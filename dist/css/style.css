@@ -345,13 +345,8 @@ body {
 .a-slide-v {
   width: 48%;
   min-height: 200px;
-  background: white;
   position: relative;
   float: left;
-  padding: 20px;
-  margin-right: 4%;
-  margin-bottom: 4%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transform-origin: center center; }
   .module:nth-child(even),
   .a-slide-v:nth-child(even) {
@@ -378,15 +373,9 @@ body {
 .a-slide-h {
   width: 48%;
   min-height: 200px;
-  background: red;
   position: relative;
   float: left;
-  padding: 20px;
-  margin-right: 4%;
-  margin-bottom: 4%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  transform-origin: center center;
-  opacity: 0.4; }
+  transform-origin: center center; }
   .module.a-scrn-t, .module.a-scrn-b,
   .a-slide-h.a-scrn-t,
   .a-slide-h.a-scrn-b {
@@ -1141,6 +1130,41 @@ body.home.fixed .p-main, body.home.modal-open .p-main {
   padding-top: 60px; }
   .o-block.block-team img {
     max-width: 100%; }
+
+.o-block.our-services {
+  background: #F2F2F2;
+  padding-top: 60px; }
+  .o-block.our-services .o-services-list .card {
+    margin-bottom: 30px;
+    background: transparent; }
+    .o-block.our-services .o-services-list .card .o-card {
+      margin-right: 8px; }
+      .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-body {
+        transform: translateY(80%); }
+        .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-body p {
+          left: 0;
+          opacity: 0;
+          margin-bottom: 8px; }
+      .o-block.our-services .o-services-list .card .o-card.o-service-item:hover .m-card-body {
+        transform: translateY(0%); }
+        .o-block.our-services .o-services-list .card .o-card.o-service-item:hover .m-card-body .a-card-text, .o-block.our-services .o-services-list .card .o-card.o-service-item:hover .m-card-body p {
+          position: relative;
+          opacity: 1; }
+    .o-block.our-services .o-services-list .card:nth-child(even) .o-card {
+      margin-right: 0;
+      margin-left: 8px; }
+
+@media (min-width: 992px) {
+  .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-image {
+    position: relative;
+    width: 100%; }
+    .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-image:before {
+      content: "";
+      display: block;
+      padding-top: 60%; }
+    .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-image .a-image, .o-block.our-services .o-services-list .card .o-card.o-service-item .m-card-image img {
+      width: 100%;
+      height: auto; } }
 
 .page__blog {
   margin-top: 120px; }

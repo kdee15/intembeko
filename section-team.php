@@ -14,11 +14,11 @@
           $team->the_post();
           ?>
 
-          <article class="card col-6 col-md-3 team-item">
+          <article class="card col-6 col-md-3 team-item toggle-div" name="team<?php the_id() ?>" >
             <div class="o-card hover-card">
               <figure class="m-card-image">
-                <img src="<?php the_field('photo') ?>" alt="pic" class="toggle-div pic" name="team<?php the_id() ?>" />
-                <img src="<?php the_field('photo_highlight') ?>" alt="pic" class="toggle-div pic-hover" name="team<?php the_id() ?>" />
+                <img src="<?php the_field('photo') ?>" alt="pic" class="pic"/>
+                <img src="<?php the_field('photo_highlight') ?>" alt="pic" class="pic-hover" />
               </figure>
               <div class="m-card-body">
                 <h3 class="a-card-header"><?php the_title() ?></h3>
