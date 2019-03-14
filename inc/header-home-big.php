@@ -15,14 +15,17 @@
       <?php if (function_exists('the_breadcrumb')) the_breadcrumb(); ?>
     </div>
 
-
-    <div class="o-hamburger m-hamburger--spin toggle-div burger-nav" name="burger-nav" id="burger-menu">
+    <div class="o-hamburger m-hamburger--spin burger-nav" name="burger-nav" id="burger-menu">
       <div class="m-hamburger-box">
         <div class="m-hamburger-inner"></div>
       </div>
     </div>
 
 	</header>
+
+  <section class="o-block o-site-navigation">
+    <?php dynamic_sidebar( 'mymenu' ); ?>
+  </section>
 
   <figure class="m-figure a-large">
     <?php get_template_part( 'inc/svg--logo' ); ?>

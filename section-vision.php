@@ -1,4 +1,4 @@
-<section class="o-block block-vision">
+<section class="o-block block-vision" id="block-vision">
 
   <div class="container">
     <h2>Our Vision</h2>
@@ -19,9 +19,7 @@
           </figure>
 
           <aside class="col-12 col-md-6">
-
             <?php the_field('about_copy') ?>
-
           </aside>
 
           <?php

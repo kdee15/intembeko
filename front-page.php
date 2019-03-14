@@ -35,8 +35,6 @@ get_header();
 
     <?php get_template_part( 'section-team'); ?>
 
-    <?php get_template_part( 'section-blog'); ?>
-
     <!-- C.2. END ------------------------------------- -->
 
     <!-- C.3. FOOTER  --------------------------------- -->

@@ -7,22 +7,14 @@
 html, body { font-family: $default; font-weight: 100; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
 
 body {
-  &.fixed,
   &.modal-open { @include position(absolute, 0); overflow: hidden;
-    &:before { @include position (absolute, 0); content: ''; background-color: rgba(0,0,0,0.9); z-index: 1000; bottom: -2000%; }
-    .p-main { @include position (absolute, 0); transform: translateX(-300px); transition: 0.3s; bottom: -2000%; }
-  }
-  &.home {
-    &.fixed,
-    &.modal-open {
-      &:before { bottom: -2000%; }
-      .p-main { bottom: -2000%; }
-    }
+    //&:before { @include position (absolute, 0); content: ''; background-color: rgba(0,0,0,0.9); z-index: 1000; bottom: -2000%; }
+    //.p-main { @include position (absolute, 0); transform: translateX(-300px); transition: 0.3s; bottom: -2000%; }
   }
 }
 
 
-.p-main { height: 100%; }
+.p-main { height: 100%; position: relative; }
 
 // A.1. END -----------------------------------------------
 

@@ -1,4 +1,4 @@
-<section class="o-block block-team">
+<section class="o-block block-team" id="block-team">
   <div class="container">
     <h3>Meet the team</h3>
     <div class="o-team-list row no-gutters">
@@ -14,7 +14,7 @@
           $team->the_post();
           ?>
 
-          <article class="card col-6 col-md-3 team-item toggle-div" name="team<?php the_id() ?>" >
+          <article class="card col-6 col-md-3 team-item modal-open" name="team<?php the_id() ?>" >
             <div class="o-card hover-card">
               <figure class="m-card-image">
                 <img src="<?php the_field('photo') ?>" alt="pic" class="pic"/>
@@ -24,7 +24,6 @@
                 <h3 class="a-card-header"><?php the_title() ?></h3>
                 <p class="team-text"><?php the_field('title') ?></p>
               </div>
-
 
               <?php get_template_part( 'modal-team' ); ?>
 

@@ -3,73 +3,73 @@
 // A.1. POSITION EQUAL SIDES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 @mixin position ($position, $padding) {
-    
-    position: $position;
-    top: $padding;
-    right: $padding;
-    bottom: $padding;
-    left: $padding;
-    
+
+  position: $position;
+  top: $padding;
+  right: $padding;
+  bottom: $padding;
+  left: $padding;
+
 }
 
 // A.1. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // B. VERTICAL ALIGN MIXIN ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    // B.1. Vertical Align --------------------------------------------------------------------------------------------
+// B.1. Vertical Align --------------------------------------------------------------------------------------------
 
-    @mixin vertical-align($position){
+@mixin vertical-align($position){
 
-        position: $position;
-        top: 50%;
-        -ms-transform: translateY(-50%) ;
-        -webkit-transform: translateY(-50%) ;
-        transform: translateY(-50%) ;
+  position: $position;
+  top: 50%;
+  -ms-transform: translateY(-50%) ;
+  -webkit-transform: translateY(-50%) ;
+  transform: translateY(-50%) ;
 
-    }
+}
 
-    // B.1. END -------------------------------------------------------------------------------------------------------
+// B.1. END -------------------------------------------------------------------------------------------------------
 
-    // B.1. Vertical Flex ---------------------------------------------------------------------------------------------
+// B.1. Vertical Flex ---------------------------------------------------------------------------------------------
 
-    @mixin vertical-flex($height){
+@mixin vertical-flex($height){
 
-        justify-content: center;
-        flex-direction: column;
-        height: $height;
+  justify-content: center;
+  flex-direction: column;
+  height: $height;
 
-    }
+}
 
-    // B.1. END -------------------------------------------------------------------------------------------------------
+// B.1. END -------------------------------------------------------------------------------------------------------
 
-    // B.1. Center Align ----------------------------------------------------------------------------------------------
+// B.1. Center Align ----------------------------------------------------------------------------------------------
 
-    @mixin center-align(){
+@mixin center-align(){
 
-        position: absolute;
-        left: 50%;
-        -ms-transform: translateX(-50%);
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 
-    }
+}
 
-    // B.1. END -------------------------------------------------------------------------------------------------------
+// B.1. END -------------------------------------------------------------------------------------------------------
 
-    // B.1. Center Align ----------------------------------------------------------------------------------------------
+// B.1. Center Align ----------------------------------------------------------------------------------------------
 
-    @mixin middle-align(){
+@mixin middle-align(){
 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translateX(-50%) translateY(-50%);
-        -webkit-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%); 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 
-    }
+}
 
-    // B.1. END -------------------------------------------------------------------------------------------------------
+// B.1. END -------------------------------------------------------------------------------------------------------
 
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -78,16 +78,16 @@
 
 @mixin aspect-ratio ($width, $aspect){
 
-    position: relative; 
-    width: $width;
+  position: relative;
+  width: $width;
 
-    &:before {
+  &:before {
 
-    content: ""; 
-    display: block; 
+    content: "";
+    display: block;
     padding-top: $aspect;
 
-    }
+  }
 }
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -98,24 +98,24 @@
 
 // D.1.1. DOWN ARROW --------------------------------------
 
-    @mixin arrow-down ($size, $color, $padding) {
-        
-        outline: 0;
+@mixin arrow-down ($size, $color, $padding) {
 
-        &:after { 
+  outline: 0;
 
-            content: '';
-            outline: 0;
-            width: 0; 
-            height: 0;
-            right: $padding;
-            border-left: $size solid transparent;
-            border-right: $size solid transparent;
-            border-top: $size solid $color;
-            @include center-align(); 
+  &:after {
 
-        }
-    }
+    content: '';
+    outline: 0;
+    width: 0;
+    height: 0;
+    right: $padding;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    @include center-align();
+
+  }
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -125,36 +125,36 @@
 
 @mixin close-button ($size, $bar-thickness, $color, $hover-color) {
 
-    position: absolute; top: 5px; right: 5px; width: $size; height: $size; cursor: pointer;
-    
-    &:before {
-        content: '';
-        background: $color;
-        width: 100%;
-        height: $bar-thickness;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        transition: 0.3s;
-    }
-        
-    &:after {
-        content: '';
-        background: $color;
-        width: 100%;
-        height: $bar-thickness;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        transition: 0.3s;
-    }
-    
-    &:hover {
-        &:before    { transform: translate(-50%, -50%) rotate(-45deg); transition: 0.3s; background: $hover-color; }
-        &:after     { transform: translate(-50%, -50%) rotate(45deg); transition: 0.3s; background: $hover-color; }
-    }
+  position: absolute; top: 5px; right: 5px; width: $size; height: $size; cursor: pointer;
+
+  &:before {
+    content: '';
+    background: $color;
+    width: 100%;
+    height: $bar-thickness;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: 0.3s;
+  }
+
+  &:after {
+    content: '';
+    background: $color;
+    width: 100%;
+    height: $bar-thickness;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: 0.3s;
+  }
+
+  &:hover {
+    &:before    { transform: translate(-50%, -50%) rotate(-45deg); transition: 0.3s; background: $hover-color; }
+    &:after     { transform: translate(-50%, -50%) rotate(45deg); transition: 0.3s; background: $hover-color; }
+  }
 
 }
 

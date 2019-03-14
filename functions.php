@@ -263,6 +263,24 @@ add_action( 'init', 'branches' );
 
 // A.3 TEMPLATE CUSTOMISATION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// A.1.0.1. REGISTER MenuBar
+
+function mymenu_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'my menu widget',
+    'id' => 'mymenu',
+    'before_widget' => '<div>',
+    'after_widget' => '</div>',
+    'before_title' => '<h2 class="rounded">',
+    'after_title' => '</h2>',
+  ) );
+}
+
+add_action( 'widgets_init', 'mymenu_widgets_init' );
+
+// A.1.0.1. END
+
 // A.1.0.1. REGISTER SIDEBAR
 
 function social_sidebar_widgets_init() {

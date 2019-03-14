@@ -82,6 +82,30 @@ function initScrollFunctions() {
 
   // A.2. END ---------------------------------------------
 
+
+// A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------
+
+  // $('.menu-item').click(function(event){
+  //
+  //   event.preventDefault();
+  //   // calculate destination place
+  //   var dest=0;
+  //   if($(this.hash).offset().top > $(document).height()-$(window).height()){
+  //     dest=$(document).height()-$(window).height();
+  //   }else{
+  //     dest=$(this.hash).offset().top;
+  //   }
+  //   // go to destination
+  //   $('html,body').animate({scrollTop:dest}, 1000,'swing');
+  //
+  //   // BURGER MENU
+  //   $('#mobi-nav').addClass('hide-nav');
+  //   $('.burger').removeClass('is-active');
+  //
+  // });
+
+// A.3. END -----------------------------------------------------------------------------------------------------------
+
 }
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
