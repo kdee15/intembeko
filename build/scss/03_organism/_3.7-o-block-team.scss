@@ -10,6 +10,75 @@
   }
 }
 
+
+
+
+// A.1. STRUCTURE -----------------------------------------------------------------------------------------------------
+
+// A.1.1 LINKS
+
+.modal-open { overflow: hidden; }
+
+.modal_img {
+
+  height: auto;
+  margin: 0 auto;
+  border-radius: 100%;
+
+}
+
+// A.1.1. END
+
+// A.1.2. MODAL CONTROLS
+
+.modal  {
+
+  @include position (fixed, 0); text-align: center; background: rgba($black, 0.9); z-index: 1000; display: none;
+
+  h2 { color: $white; margin: 0; margin-top: $base; }
+  h3 { color: $white; margin: 0; margin-bottom: $base; }
+
+  .copy {
+    p { color: $white; line-height: normal; }
+  }
+
+  &.on { display: block; overflow: hidden;  }
+
+}
+
+// A.1.4. END
+
+// A.1.4. END
+
+// A.1.5. END
+
+.modalClose {
+
+  position: absolute;
+  color: $white;
+  top: 20px;
+  font-size: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  border-radius: 100%;
+  border: solid 1px $white;
+
+  span {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+
+// A.1.5. END
+
+// A.1. END -----------------------------------------------------------------------------------------------------------
+
+// A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 // A.1. END -----------------------------------------------------------------------------------------------------------
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

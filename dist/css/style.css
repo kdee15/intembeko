@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+@font-face {
+  font-family: 'limo';
+  src: url("../fonts/quattrocento/champagne_limousines.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+h1, h2, h3, h4, h5, h6 h7 {
+  font-family: 'limo', sans-serif; }
+
 .a-burger,
 .navbar-toggler {
   border: 0;
@@ -1130,6 +1139,55 @@ body.home.fixed .p-main, body.home.modal-open .p-main {
   padding-top: 60px; }
   .o-block.block-team img {
     max-width: 100%; }
+
+.modal-open {
+  overflow: hidden; }
+
+.modal_img {
+  height: auto;
+  margin: 0 auto;
+  border-radius: 100%; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: none; }
+  .modal h2 {
+    color: #FFFFFF;
+    margin: 0;
+    margin-top: 15px; }
+  .modal h3 {
+    color: #FFFFFF;
+    margin: 0;
+    margin-bottom: 15px; }
+  .modal .copy p {
+    color: #FFFFFF;
+    line-height: normal; }
+  .modal.on {
+    display: block;
+    overflow: hidden; }
+
+.modalClose {
+  position: absolute;
+  color: #FFFFFF;
+  top: 20px;
+  font-size: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  border-radius: 100%;
+  border: solid 1px #FFFFFF; }
+  .modalClose span {
+    display: block;
+    text-align: center;
+    padding-top: 10px; }
 
 .o-block.our-services {
   background: #F2F2F2;

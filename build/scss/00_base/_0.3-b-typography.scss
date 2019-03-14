@@ -6,6 +6,19 @@
 
 $default: Roboto, Helvetica, 'Arial Black', sans-serif;
 
+@font-face {
+  font-family: 'limo';
+  src: url('../fonts/quattrocento/champagne_limousines.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+h1, h2, h3, h4, h5, h6 h7 { font-family: 'limo', sans-serif; }
+
 
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
