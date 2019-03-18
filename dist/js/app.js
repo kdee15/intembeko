@@ -231,7 +231,7 @@ function initSwiperFunctions() {
 
   // A.1. HOME CAROUSEL -----------------------------------
 
-  var swiper = new Swiper('.swiper-container', {
+  var swiper = new Swiper('.swiper-home', {
     speed: 600,
     parallax: true,
     loop: true,
@@ -246,6 +246,24 @@ function initSwiperFunctions() {
   });
 
   // A.1. END ---------------------------------------------
+
+  // A.2. TEAM CAROUSEL -----------------------------------
+
+  var swiper = new Swiper('.swiper-team', {
+    speed: 600,
+    parallax: true,
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+
+  // A.2. END ---------------------------------------------
 
 }
 
@@ -414,25 +432,25 @@ function initScrollFunctions() {
 
 
 // A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------
-
-  // $('.menu-item').click(function(event){
-  //
-  //   event.preventDefault();
-  //   // calculate destination place
-  //   var dest=0;
-  //   if($(this.hash).offset().top > $(document).height()-$(window).height()){
-  //     dest=$(document).height()-$(window).height();
-  //   }else{
-  //     dest=$(this.hash).offset().top;
-  //   }
-  //   // go to destination
-  //   $('html,body').animate({scrollTop:dest}, 1000,'swing');
-  //
-  //   // BURGER MENU
-  //   $('#mobi-nav').addClass('hide-nav');
-  //   $('.burger').removeClass('is-active');
-  //
-  // });
+//
+//   $('.menu-item').click(function(event){
+//
+//     event.preventDefault();
+//     // calculate destination place
+//     var dest=0;
+//     if($(this.hash).offset().top > $(document).height()-$(window).height()){
+//       dest=$(document).height()-$(window).height();
+//     }else{
+//       dest=$(this.hash).offset().top;
+//     }
+//     // go to destination
+//     $('html,body').animate({scrollTop:dest}, 1000,'swing');
+//
+//     // BURGER MENU
+//     $('#mobi-nav').addClass('hide-nav');
+//     $('.burger').removeClass('is-active');
+//
+//   });
 
 // A.3. END -----------------------------------------------------------------------------------------------------------
 

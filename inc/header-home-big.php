@@ -23,7 +23,7 @@
 
 	</header>
 
-  <section class="o-block o-site-navigation">
+  <section class="o-block o-site-navigation top" id="top">
     <?php dynamic_sidebar( 'mymenu' ); ?>
   </section>
 

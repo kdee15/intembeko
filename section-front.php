@@ -2,7 +2,7 @@
 
   <!-- C.1. PAGE HEADER --------------------------------- -->
 
-  <div class="swiper-container">
+  <div class="swiper-container swiper-home">
 
     <div class="swiper-wrapper">
 

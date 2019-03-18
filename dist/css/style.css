@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
 @font-face {
   font-family: 'limo';
-  src: url("../fonts/quattrocento/champagne_limousines.ttf");
+  src: url("../fonts/champagne_limousines.ttf");
   font-weight: normal;
   font-style: normal; }
 
@@ -455,6 +455,23 @@ body.modal-open {
     color: white;
     text-shadow: 0 0 5px #000000; }
 
+.m-video-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto; }
+  .m-video-wrapper:before {
+    content: "";
+    display: block;
+    padding-top: 56%; }
+  .m-video-wrapper iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
 .o-header {
   background-color: rgba(255, 255, 255, 0);
   display: flex;
@@ -494,7 +511,7 @@ body.modal-open {
       transition: 0.3s; }
   .o-header.big-head.sticky .m-link {
     width: 200px; }
-  .o-header.big-head.sticky + .m-figure.a-large {
+  .o-header.big-head.sticky ~ .m-figure.a-large {
     opacity: 0;
     transition: 0.6s; }
 
@@ -807,6 +824,10 @@ body.modal-open {
     height: 4px;
     border-radius: 0; }
 
+.o-block.block-team .swiper-pagination {
+  position: relative;
+  bottom: 0; }
+
 .o-insta-feed .instagram-pics {
   list-style-type: none;
   padding: 0;
@@ -885,6 +906,27 @@ body.modal-open {
   padding: 60px 0; }
   .o-block.block-team img {
     max-width: 100%; }
+  .o-block.block-team .m-video-wrapper {
+    max-width: 500px;
+    margin-top: 60px; }
+  .o-block.block-team .m-quote-details {
+    max-width: 500px;
+    margin: 60px auto 15px; }
+    .o-block.block-team .m-quote-details p {
+      margin: 0; }
+    .o-block.block-team .m-quote-details .a-author {
+      text-align: right; }
+  .o-block.block-team .swiper-pagination {
+    width: 100%;
+    text-align: center; }
+    .o-block.block-team .swiper-pagination .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 15px;
+      outline: none !important;
+      margin: 0 2px; }
+      .o-block.block-team .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        box-shadow: 0 0 10px black; }
 
 .modal-open {
   overflow: hidden; }

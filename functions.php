@@ -193,39 +193,6 @@ add_action( 'init', 'services' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 
-// A.2.1. CLIENT LOGOS --------------------------------------------------------------------------------------------
-
-function logos() {
-  $labels = array(
-    'Title'              => _x( 'Logos', 'post type general name' ),
-    'singular_name'      => _x( 'Logo', 'post type singular name' ),
-    'add_new'            => _x( 'Add New', 'Logo' ),
-    'add_new_item'       => __( 'Add New Logo' ),
-    'edit_item'          => __( 'Edit Logos' ),
-    'new_item'           => __( 'New Logo' ),
-    'all_items'          => __( 'All Logos' ),
-    'view_item'          => __( 'View Logo' ),
-    'parent_item_colon'  => '',
-    'menu_name'          => 'Client Logos'
-  );
-
-  $args = array(
-    'labels'         => $labels,
-    'description'   => 'A list of Team Carousel Pics',
-    'public'        => true,
-    'menu_position' => 6,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
-    'has_archive'   => true,
-
-  );
-
-  register_post_type( 'logos', $args );
-}
-
-add_action( 'init', 'logos' );
-
-// A.2.1. End -----------------------------------------------------------------------------------------------------
-
 // A.2.1. CONTACT DETAILS -----------------------------------------------------------------------------------------
 
 function branches() {

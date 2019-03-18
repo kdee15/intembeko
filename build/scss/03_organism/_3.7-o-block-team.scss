@@ -7,6 +7,20 @@
 .o-block {
   &.block-team { background: white; padding: $base-xl 0;
     img { max-width: 100%; }
+
+    .m-video-wrapper { max-width: 500px; margin-top: $base-xl; }
+    .m-quote-details { max-width: 500px; margin: $base-xl auto $base;
+      p { margin: 0; }
+      .a-author { text-align: right; }
+    }
+
+    .swiper-pagination { width: 100%; text-align: center;
+      .swiper-pagination-bullet {
+        width: 8px; height: 8px; border-radius: 15px; outline: none!important; margin: 0 2px;
+        &.swiper-pagination-bullet-active { box-shadow: 0 0 10px black; }
+      }
+    }
+
   }
 }
 
@@ -15,14 +29,7 @@
 // A.1.1 LINKS
 
 .modal-open { overflow: hidden; }
-
-.modal_img {
-
-  height: auto;
-  margin: 0 auto;
-  border-radius: 100%;
-
-}
+.modal_img { height: auto; margin: 0 auto; border-radius: 100%; }
 
 // A.1.1. END
 
