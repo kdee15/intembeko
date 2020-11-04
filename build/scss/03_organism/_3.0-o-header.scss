@@ -53,10 +53,8 @@
 // A.1.2. HOMEPAGE LOGO -----------------------------------
 
 .m-figure {
-  &.a-large { margin: 0 auto; max-width: 500px; width: 100%; @include middle-align(); z-index: 1000; transition: 0.6s;
+  &.a-large { margin: 0 auto; max-width: 200px; width: 100%; top: 15%; @include center-align(); z-index: 1000; transition: 0.6s;
     svg {filter: drop-shadow(0px 0px 3px white); }
-
-
   }
 }
 

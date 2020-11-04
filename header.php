@@ -31,11 +31,6 @@
 
     <!-- B. HEAD JS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-    <!-- LOCAL -->
-<!--    <script src="--><?php //bloginfo('template_url'); ?><!--/dist/js/jquery/jquery.min.js"></script>-->
-<!--    <script src="--><?php //bloginfo('template_url'); ?><!--/dist/js/libraries/bootstrap.min.js"></script>-->
-<!--    <script src="--><?php //bloginfo('template_url'); ?><!--/dist/js/libraries/swiper.min.js"></script>-->
-
     <!-- LIVE -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

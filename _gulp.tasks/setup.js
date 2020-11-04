@@ -5,107 +5,122 @@ var config = require('../_config.json'),
     runSequence = require('run-sequence'),
     rename = require('gulp-rename'),
     gutil = require('gulp-util'),
+    gulpLoadPlugins = require('gulp-load-plugins'),
     concat = require('gulp-concat');
 
-// END ================================================================================================================
-
-// GULP TASKS [VARIABLES] ==============================================================================================
-
+var plugins = gulpLoadPlugins();
 
 // END ================================================================================================================
 
-// GULP TASKS [INSTALLS] ==============================================================================================
+// GULP TASK [SETUP] ==================================================================================================
 
-// A. INSTALL KONSTRUCT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// A. INSTALL CSS LIBRARIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('install-css', function() {
-
-    // A.1. INSTALL VENDOR LIBRARIES ----------------------------------------------------------------------------------
-
-    for( libraries in config.dist.css.libraries) {
-        
-        gulp.src(['bower_components/' + config.dist.css.libraries[libraries] ])
-        .pipe(gulp.dest('dist/css/libraries').on('error', gutil.log))
-        gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.css.libraries[libraries]));
-
+gulp.task('install-css', done => {
+    // Add all css library files
+    for( file in config.dist.css.libraries.files) {
+        gulp.src(['node_modules/' + config.dist.css.libraries.files[file] ])
+            .pipe(gulp.dest('dist/css/libraries').on('error', gutil.log))
+            gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.css.libraries.files[file]));
     }
-
-    // A.1. END -------------------------------------------------------------------------------------------------------
-
+    // Add all css library maps
+    for( map in config.dist.css.libraries.maps) {
+        gulp.src(['node_modules/' + config.dist.css.libraries.maps[map] ])
+            .pipe(gulp.dest('dist/css/libraries').on('error', gutil.log))
+            gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.css.libraries.maps[map]));
+    }
+    // Add all css asset files
+    for( file in config.assets.css.libraries.files) {
+        gulp.src(['assets/' + config.assets.css.libraries.files[file] ])
+            .pipe(plugins.cleanCss())
+            .pipe(plugins.rename({
+              suffix: '.min'
+            }))
+            .pipe(gulp.dest('dist/css/libraries').on('error', gutil.log))
+            gutil.log(gutil.colors.cyan('++ Installing ' + config.assets.css.libraries.files[file]));
+    }
+    done();
 });
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// B. UPDATE KONSTRUCT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// B. COMPILE LIBRARIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('update-css', function() {
-
-    // B.1. INSTALL VENDOR LIBRARIES ----------------------------------------------------------------------------------
-
-    for( library in config.assets.css.libraries) {
-        
-        gulp.src(['bower_components/' + config.assets.css.libraries[library] ])
-        .pipe(gulp.dest('dist/css/library').on('error', gutil.log))
-        gutil.log(gutil.colors.cyan('++ Updating ' + config.assets.css.libraries[library]));
-
+gulp.task('concat-css', done => {
+    var files = [];
+    for( library in config.dist.css.libraries.order) {
+        files.push('dist/css/libraries/' + config.dist.css.libraries.order[library]);
     }
-
-    // B.1. END -------------------------------------------------------------------------------------------------------
-
+    for( library in config.assets.css.libraries.order) {
+        files.push('dist/css/libraries/' + config.assets.css.libraries.order[library]);
+    }
+    gulp.src(files)
+        .pipe(concat('libraries.css'))
+        .pipe(gulp.dest('dist/css/').on('error', gutil.log))
+        gutil.log(gutil.colors.cyan('++ Compiling libraries.css file '));
+    done();
 });
 
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// C. INSTALL JAVASCRIPT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// C. INSTALL JS LIBRARIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('install-js', function() {
-    
-    // C.1. MOVE FILES FROM BOWER -------------------------------------------------------------------------------------
-
-    for( bower in config.dist.js.components.bower) {
-
-        gulp.src(['bower_components/' + config.dist.js.components.bower[bower], ])
-        .pipe(gulp.dest('dist/js/components/').on('error', gutil.log))
-        gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.js.components.bower[bower]));
-        
+gulp.task('install-js', done => {
+    // Add all js library files.
+    for( node in config.dist.js.libraries.nodes) {
+        gulp.src(['node_modules/' + config.dist.js.libraries.nodes[node], ])
+            .pipe(gulp.dest('dist/js/libraries/').on('error', gutil.log))
+            gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.js.libraries.nodes[node]));
     }
-    
-    // C.1. END -------------------------------------------------------------------------------------------------------
-    
-    // C.2. MOVE MAP FILES FROM BOWER ---------------------------------------------------------------------------------
-
-    for( map in config.dist.js.components.maps) {
-
-        gulp.src(['bower_components/' + config.dist.js.components.maps[map], ])
-        .pipe(gulp.dest('dist/js/components').on('error', gutil.log))
-        gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.js.components.maps[map]));
+    // Add all js library maps
+    for( map in config.dist.js.libraries.maps) {
+        gulp.src(['node_modules/' + config.dist.js.libraries.maps[map], ])
+            .pipe(gulp.dest('dist/js/libraries').on('error', gutil.log))
+            gutil.log(gutil.colors.cyan('++ Installing ' + config.dist.js.libraries.maps[map]));
     }
-    
-    // C.2. END -------------------------------------------------------------------------------------------------------
-
+    // Add all js asset files
+    for( file in config.assets.js.libraries.files) {
+        gulp.src(['assets/' + config.assets.js.libraries.files[file] ])
+            .pipe(plugins.jshint())
+            .pipe(plugins.uglify())
+            .pipe(plugins.rename({
+                suffix: '.min'
+            }))
+            .pipe(gulp.dest('dist/js/libraries').on('error', gutil.log))
+        gutil.log(gutil.colors.cyan('++ Installing ' + config.assets.js.libraries.files[file]));
+    }
+    done();
 });
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// D. COMPILE COMPONENTS INTO COMPONENTS.JS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// D. COMPILE LIBRARIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('concat-js', function() {
-
+gulp.task('concat-js', done => {
     var files = [];
-    
-    for( component in config.dist.js.components.order) {
-
-        files.push('dist/js/components/' + config.dist.js.components.order[component]);
-
+    for( library in config.dist.js.libraries.order) {
+        files.push('dist/js/libraries/' + config.dist.js.libraries.order[library]);
     }
-        
+    for( asset in config.assets.js.libraries.order) {
+        files.push('dist/js/libraries/' + config.assets.js.libraries.order[asset]);
+    }
     gulp.src(files)
-        .pipe(concat('components.js'))
+        .pipe(concat('libraries.js'))
         .pipe(gulp.dest('dist/js/').on('error', gutil.log))
-        gutil.log(gutil.colors.cyan('++ Compiling components.js file '));
-
+        gutil.log(gutil.colors.cyan('++ Compiling libraries.js file '));
+    done();
 });
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// E. SET UP PROJECT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+gulp.task('launch-the-cow', gulp.series(['install-css', 'install-js', 'concat-css', 'concat-js']), () => { });
+
+// https://www.youtube.com/watch?v=t7_wAfATQoU 
+
+// E. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // END ================================================================================================================
+
+// END OF FILE ========================================================================================================

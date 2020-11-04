@@ -1,129 +1,206 @@
- // REGISTER COMPONENTS ================================================================================================
+// REGISTER COMPONENTS ================================================================================================
 
 'use strict';
 
 var config = require('../_config.json'),
     gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
+    rimraf = require('rimraf'),
+    autoprefixer = require('gulp-autoprefixer'),
     htmlPartial = require('gulp-html-partial'),
-    livereload = require('gulp-livereload'),
-    server = require('gulp-server-livereload');
+    merge = require('merge-stream');
 
 //Loading of plugins
 
 var plugins = gulpLoadPlugins();
 
+// Define Project Paths
+
+var paths = {
+    wwwRoot: ""
+};
+
+// build folders
+paths.ScssFolder = paths.wwwRoot + "build/scss/*.scss";
+paths.ScssBlockFolder = paths.wwwRoot + "build/scss/04_templates/**/*.scss";
+paths.JsFolder = paths.wwwRoot + "dist/js/";
+paths.HtmlFolder = paths.wwwRoot + "build/html/**/*";
+
+// compiled output folders
+paths.CssFolder = paths.wwwRoot + "dist/css/";
+paths.CssBlockFolder = paths.wwwRoot + "templates/**/*style.css";
+paths.CssAll = paths.wwwRoot + "dist/css/style.*";
+paths.JsAll = paths.wwwRoot + "dist/js/app.*";
+paths.HtmlDest = paths.wwwRoot + "static-html";
+
+// compiled production ready folders
+paths.CssDest = paths.wwwRoot + "dist/css/style.css";
+paths.CssBlockDest = paths.wwwRoot + "templates/";
+paths.JsDest = paths.wwwRoot + "dist/js/app.js";
+
 // END ================================================================================================================
-
-// GULP TASK [SERVER + LIVERELOAD] ====================================================================================
-
-// A. VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//
-// var EXPRESS_PORT = 4200;
-var ROOT = config.root;
-// var LIVERELOAD_PORT = 35729;
-
-// GULP TASK [DEVELOPMENT] ============================================================================================
 
 // A. CSS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('compile-sass', function() {
-    
-    return gulp.src('build/scss/*.scss')
-    
-    // Error handling. If there is an error in sass syntax it will toss out a red error in the console, toss a notification and fire a warning sound
-    
-    .pipe(plugins.plumber({ errorHandler: function(err) {
+// A.1. COMPILE FOR ALL PROJECTS --------------------------
+
+gulp.task('compile-sass', function () {
+  return gulp.src(paths.ScssFolder)
+    .pipe(plugins.plumber({
+      errorHandler: function (err) {
         plugins.notify.onError({
-            title: "Gulp error in " + err.plugin,
-            message:  err.toString()
+          title: "Gulp error in " + err.plugin,
+          message: err.toString()
         })(err);
         // play a sound once
         plugins.util.beep();
         this.emit('end');
-    }}))
-    
-    //Sourcemaps are for ease of use and debugging. It will out line which scss file has certain css code
+      }
+    }))
     .pipe(plugins.sourcemaps.init())
-    
-    // AUTOPREFIXER
-    
-    //Sass plugin is compiling the sass into css
     .pipe(plugins.sass())
     .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/css/'));
-    
+    .pipe(gulp.dest(paths.CssFolder));
 });
-
-
- gulp.task('webserver', ['default'], function() {
-     gulp.src(ROOT)
-         .pipe(server({
-             open: true,
-             livereload : {
-               enable : true,
-             },
-             directoryListing : {
-                 enable: true,
-                 path : ROOT
-             },
-         }));
- });
-
-
 
 gulp.task('autoprefix', function () {
-    
-    // A. MINIFY CSS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        
-    return gulp.src('dist/css/*.css')
-
-        .pipe(plugins.postcss('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
-        .pipe(gulp.dest('dist/css'));
-        
-    // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+  return gulp.src(paths.CssDest)
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'],
+      cascade: false
+    }))
+    .pipe(gulp.dest(paths.CssFolder));
 });
+
+// A.1. END -----------------------------------------------
+
+// A.2. COMPILE FOR STAND ALONE BLOCKS --------------------
+
+gulp.task('compile-sass-blocks', function () {
+  return gulp.src(paths.ScssBlockFolder)
+    .pipe(plugins.plumber({
+      errorHandler: function (err) {
+        plugins.notify.onError({
+          title: "Gulp error in " + err.plugin,
+          message: err.toString()
+        })(err);
+        // play a sound once
+        plugins.util.beep();
+        this.emit('end');
+      }
+    }))
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass())
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.CssBlockDest));
+});
+
+gulp.task('autoprefix', function () {
+  return gulp.src(paths.CssBlockDest)
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'],
+      cascade: false
+    }))
+    .pipe(gulp.dest(paths.CssBlockDest));
+});
+
+// A.2. END -----------------------------------------------
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // B. JAVASCRIPT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('compile-js', function() {
-  gulp.src([
+// B.1. COMPILE FOR ANGULAR PROJECTS ----------------------
+
+gulp.task('compile-ng', function () {
+    var polyfill = gulp.src(['node_modules/@babel/polyfill/dist/polyfill.min.js']);
+    var application = gulp.src(
+        [
             'build/js/scripts/*.js',
             'build/js/scripts/*.*.js'
-           ])
-    //.pipe(plugins.jshint(process.cwd() + '/.jshintrc'))
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
+        ])
+        .pipe(plugins.jshint())
+        .pipe(plugins.jshint.reporter('jshint-stylish'))
+        .pipe(plugins.jshint.reporter('fail'))
+        .pipe(plugins.replace('X.X.X', process.env.APPVEYOR_BUILD_VERSION || 'V.V.V'));
+
+    return merge(polyfill, application)
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.concat('app.js'))
+        .pipe(plugins.babel({ presets: ['@babel/env'] }))
+        .pipe(plugins.uglify())
+        .pipe(plugins.rename({
+            suffix: '.min'
+        }))
+        .pipe(plugins.sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.JsFolder));
+});
+
+// B.1. END -----------------------------------------------
+
+// B.2. COMPILE FOR JQUERY PROJECTS -----------------------
+
+gulp.task('compile-js', function () {
+
+  return gulp.src(
+    [
+      'build/js/scripts/*.js',
+      'build/js/scripts/*.*.js'
+    ])
+
+    .pipe(plugins.jshint())
     .pipe(plugins.concat('app.js'))
-    .pipe(gulp.dest('dist/js/'));
+    .pipe(gulp.dest(paths.JsFolder));
 
 });
 
+// B.2. END -----------------------------------------------
+
+// B.3. COMPILE FOR JQUERY PROJECTS -----------------------
+
+gulp.task('uglify-js', function () {
+
+  return gulp.src(paths.JsDest)
+
+    .pipe(plugins.jshint())
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.uglify())
+    .pipe(plugins.rename({
+      suffix: '.min'
+    }))
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.JsFolder));
+
+});
+
+// B.3. END -----------------------------------------------
+
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// C. HTML ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+gulp.task('html-compile', function () {
+    return gulp.src(paths.HtmlFolder)
+        .pipe(htmlPartial({
+            basePath: 'build/html/'
+        }))
+        .pipe(gulp.dest(paths.HtmlDest));
+
+});
+
+// C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END ================================================================================================================
 
 // GULP TASK [DEFAULT] ================================================================================================
 
 gulp.task('default', function () {
-
-
-        // A.2. Watch SASS Changes
-
-        gulp.watch('build/scss/**/*.scss', ['compile-sass']);
-        // A.3. Watch JS Changes
-
-        gulp.watch('build/js/scripts/*', ['compile-js']);
-
-    // A.4. Watch HTML Changes
-        gulp.watch('static_html/**/*.html', ['html-compile']);
-
-
-
-    // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+  gulp.watch(paths.ScssBlockFolder, gulp.series('compile-sass-blocks'));
+  gulp.watch('build/scss/**/*.scss', gulp.series('compile-sass'));
+  gulp.watch('build/js/scripts/*', gulp.series('compile-js'));
+  gulp.watch(paths.CssDest, gulp.series('minify-css'));
+  gulp.watch(paths.CssBlockFolder, gulp.series('minify-css-block'));
+  gulp.watch('build/html/**/*', gulp.series('html-compile'));
 });
 
 // END ================================================================================================================
@@ -132,74 +209,35 @@ gulp.task('default', function () {
 
 // A. MINIFY CSS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('minify-css', function(){
-    return gulp.src('dist/css/style.css')
-    .pipe(plugins.cleanCss())
-    .pipe(plugins.rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest('dist/css'));
+gulp.task('minify-css', function () {
+    return gulp.src(paths.CssDest)
+        .pipe(plugins.cleanCss())
+        .pipe(plugins.rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest(paths.CssFolder));
 });
+
+gulp.task('minify-css-block', function () {
+    return gulp.src(paths.CssBlockFolder)
+        .pipe(plugins.cleanCss())
+        .pipe(plugins.rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest(paths.CssBlockDest));
+});
+
+gulp.task('minify-all', gulp.series(['minify-css', 'minify-css-block']), () => { });
+
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// B. COMPRESS JS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-gulp.task('compress-js', function(){
-    return gulp.src('dist/js/app.js')
-    .pipe(plugins.uglify())
-    .pipe(plugins.rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('compress', function (cb) {
-    pump([
-            gulp.src('dist/js/*.js'),
-            plugins.uglify(),
-            gulp.dest('dist/minified/js')
-        ],
-        cb
-    );
-});
-
-// B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // C. DEPLOY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-gulp.task('deploy', function () {
-        
-    return gulp.src('dist/css/*.css')
-
-        .pipe(plugins.cleanCss())
-        .pipe(gulp.dest('dist/minified/css'));
-
-});
+gulp.task('deploy-all', gulp.series(['compile-sass', 'compile-sass-blocks', 'autoprefix', 'minify-all', 'compile-js']), () => { });
+gulp.task("clean:js", done => rimraf(paths.JsAll, done));
+gulp.task("clean:css", done => rimraf(paths.CssAll, done));
+gulp.task("clean", gulp.series(["clean:js", "clean:css"]));
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// END ================================================================================================================
-
 // END OF FILE ========================================================================================================
-
-
- // A. Partial html +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
- gulp.task('html-compile', function () {
-     gulp.src(['static_html/src/*.html'])
-         .pipe(htmlPartial({
-             basePath: 'static_html/src/'
-         }))
-         .pipe(gulp.dest('build/html'));
- });
-
-
-
- // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
- // END ================================================================================================================
-
- // END OF FILE ========================================================================================================
-

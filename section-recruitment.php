@@ -5,7 +5,7 @@
 
       <!-- C.1. PAGE HEADER ----------------------- -->
 
-      <div class="swiper-container swiper-home">
+      <div class="swiper-container swiper-team">
 
         <div class="swiper-wrapper">
 

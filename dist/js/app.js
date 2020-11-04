@@ -231,17 +231,15 @@ function initSwiperFunctions() {
 
   // A.1. HOME CAROUSEL -----------------------------------
 
-  var swiper = new Swiper('.swiper-home', {
+  var swiper1 = new Swiper('.swiper-home', {
     speed: 600,
+    slidesPerView: 1,
     parallax: true,
+    direction: 'vertical',
     loop: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
     },
   });
 
@@ -249,10 +247,10 @@ function initSwiperFunctions() {
 
   // A.2. TEAM CAROUSEL -----------------------------------
 
-  var swiper = new Swiper('.swiper-team', {
+  var swiper2 = new Swiper('.swiper-team', {
     speed: 600,
-    parallax: true,
-    loop: false,
+    loop: true,
+    slidesPerView: 1,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
