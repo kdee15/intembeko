@@ -16,6 +16,12 @@ function initSwiperFunctions() {
       el: '.swiper-pagination',
       clickable: true,
     },
+    autoplay: {
+      delay: 5000,
+    },
+    fadeEffect: {
+      crossFade: true
+    },
   });
 
   // A.1. END ---------------------------------------------
@@ -33,6 +39,24 @@ function initSwiperFunctions() {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
+    },
+  });
+
+  // A.2. END ---------------------------------------------
+
+  // A.3. PARTNER CAROUSEL --------------------------------
+
+  var swiper3 = new Swiper('.swiper-partners', {
+    speed: 600,
+    loop: true,
+    slidesPerView: 4,
+    pagination: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 5000,
     },
   });
 

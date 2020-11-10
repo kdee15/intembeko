@@ -16,22 +16,11 @@ body.single {
 
 // A.2. HOMEPAGE ------------------------------------------------------------------------------------------------------
 
-html,
 body.home {
   &.blog {
-
-    #o-header {  }
-
-    .p-main { margin-top: 100%;
+    .p-main { margin-top: 100vh;
       .o-header { height: 100%; position: relative; }
-
-      .o-block {
-        &.blog-posts {
-          .a-btn { margin: $base-md 0 0 0; }
-        }
-      }
     }
-
   }
 }
 

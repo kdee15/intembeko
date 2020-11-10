@@ -1,35 +1,16 @@
-// 3. ORGANISM [ 3.9. MODAL BLOCK ] ###################################################################################
+// 3. ORGANISM [ 3.9. PARTNERS BLOCK ] ################################################################################
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
-.o-modal-full {
-
-  .modalClose {
-    @include close-button (25px, 2px, white, $grey-ce);
-    top: $base;
-    right: $base;
-    z-index: 999;
-    border-radius: 100%;
-    border: solid 1px $white;
-  }
-
-  .container {
-
-    .m-modal-body { margin-top: $base-md;
-      .m-modal-head {
-        .a-modal-img { width: 40%; max-width: 200px; border-radius: 100px; border: 2px solid white; }
-        h2 { font-size: 24px; }
-        h3 { font-size: 18px; }
-      }
-      .m-modal-copy {
-        p { font-size: 12px; color: white; }
-      }
+.o-block {
+  &.block-partners { background-color: $grey-b3; padding: $base-xl 0;
+    .m-figure { margin: 0; padding: 0; display: flex; height: 100%; flex-direction: column; justify-content: center;
+      img { width: 90%; height: auto; display: block; margin: 0 auto; filter: grayscale(100%) sepia(30%); }
     }
   }
 }
-
 
 // A.1. END -----------------------------------------------------------------------------------------------------------
 
@@ -49,24 +30,7 @@
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {
-
-  .o-modal-full {
-    .container { height: 100%;
-      .m-modal-body { height: 100%; margin-top: 0;
-        .m-modal-head {
-          .a-modal-img { width: 100%; }
-          h2 { font-size: 24px; }
-          h3 { font-size: 18px; }
-        }
-        .m-modal-copy {
-          p { font-size: 12px; }
-        }
-      }
-    }
-  }
-
-}
+@media ($md-up) {}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -5,8 +5,17 @@
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
 .o-block {
-  &.block-vision { background: white; padding-top: $base-xl;
-    img { max-width: 90%; }
+  &.block-vision { background: white; position: relative; overflow-x: hidden;
+    .row { position: relative; z-index: 1;
+      &:nth-child(odd) {
+        &:before { position: absolute; content: ''; top: 0; bottom: 0; left: -4000px; right: -5000px; background: $grey-f2; z-index: 0; }
+      }
+      &:first-child { padding-top: $base-xl; padding-bottom: $base-xl; }
+      &:last-child { padding-bottom: $base-xl; padding-top: $base-xl; }
+    }
+    .a-block-title {}
+    .m-block-text {}
+    .m-block-image { background-size: cover; background-position: center; }
   }
 }
 

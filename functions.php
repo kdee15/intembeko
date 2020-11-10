@@ -226,6 +226,39 @@ add_action( 'init', 'branches' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 
+// A.2.1. CONTACT DETAILS -----------------------------------------------------------------------------------------
+
+function partners() {
+  $labels = array(
+    'Title'              => _x( 'Partners', 'post type general name' ),
+    'singular_name'      => _x( 'Partner', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'Partner' ),
+    'add_new_item'       => __( 'Add New Partner' ),
+    'edit_item'          => __( 'Edit Partner' ),
+    'new_item'           => __( 'New Partner' ),
+    'all_items'          => __( 'All Partner' ),
+    'view_item'          => __( 'View Partner' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Partners'
+  );
+
+  $args = array(
+    'labels'         => $labels,
+    'description'   => 'A list of Partners',
+    'public'        => true,
+    'menu_position' => 8,
+    'supports'      => array( 'title', 'editor', 'thumbnail' ),
+    'has_archive'   => true,
+
+  );
+
+  register_post_type( 'partners', $args );
+}
+
+add_action( 'init', 'partners' );
+
+// A.2.1. End -----------------------------------------------------------------------------------------------------
+
 // A.2 END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // A.3 TEMPLATE CUSTOMISATION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
