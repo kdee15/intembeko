@@ -5,7 +5,7 @@
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
 .o-block {
-  &.block-team { background: white; padding: $base-xl 0;
+  &.block-team { background: $grey-f2; padding: $base-xl 0;
     img { max-width: 100%; }
 
     .m-video-wrapper { max-width: 500px; margin-top: $base-xl; }
@@ -21,6 +21,37 @@
       }
     }
 
+    .o-team-list {
+      .col {
+        &.team-item { min-width: 100%; }
+      }
+      .team-item { margin-bottom: 20px;
+        .o-card {
+          .m-card-body {
+            transform: translateY(70%);
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+            background-color: transparent;
+            transition: 0.6s;
+            .a-card-header { top: 10px; transition: 0.6s; }
+            .team-text { top: 30px; transition: 0.6s; }
+          }
+          &:hover {
+            .m-card-body {
+              transform: translateY(0);
+              background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+              background-color: transparent;
+              transition: 0.4s;
+              .a-card-header { top: 60%; transition: 0.6s; }
+              .team-text { top: 50%; transition: 0.6s; }
+
+            }
+          }
+        }
+        &._staff { width: 50%; margin-bottom: 0;
+        }
+      }
+
+    }
   }
 }
 
@@ -69,13 +100,43 @@
 
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-up) {} 
+@media ($sm-up) {
+
+  .o-block {
+    &.block-team {
+      .o-team-list {
+        .col {
+          &.team-item { min-width: 33.33%; }
+        }
+        .team-item {
+          &._staff { width: 33.33%; }
+        }
+      }
+    }
+  }
+
+}
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {} 
+@media ($md-up) {
+
+  .o-block {
+    &.block-team {
+      .o-team-list {
+        .col {
+          &.team-item { min-width: 20%; }
+        }
+        .team-item {
+          &._staff { width: 16.666667%; }
+        }
+      }
+    }
+  }
+
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

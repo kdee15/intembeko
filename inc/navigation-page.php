@@ -7,12 +7,12 @@
     </div>
   </div>
 
-    <?php if ( has_nav_menu( 'primary' ) ) : ?>
-      <nav id="site-navigation" class="main-navigation navbar-nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'kdee' ); ?>">
+    <?php if ( has_nav_menu( 'page_menu' ) ) : ?>
+      <nav id="site-navigation" class="main-navigation navbar-nav" role="navigation" aria-label="<?php esc_attr_e( 'Page Menu', 'kdee' ); ?>">
         <?php
         wp_nav_menu( array(
-          'theme_location' => 'kdee',
-          'menu_class'     => 'primary-menu',
+          'theme_location' => 'page_menu',
+          'menu_class'     => 'page-menu',
         ) );
         ?>
       </nav>

@@ -169,6 +169,33 @@ function initToggleFunctions() {
 
   // A.2. END ---------------------------------------------
 
+  // A.2. TOGGLE TAB --------------------------------------
+
+  var slideContent = '';
+  $('.toggle-tab').on('click', function(){
+    console.log('hello!');
+    slideContent = $(this).attr('name');
+    if($('#'+slideContent).hasClass('on')){
+      // $('#'+slideContent).removeClass('on');
+      // $('.'+slideContent).removeClass('on');
+    }else{
+      hideSlideContent();
+      showSlideContent(slideContent);
+    }
+  });
+
+  function hideSlideContent(){
+    $('.toggle-tab').removeClass('on');
+    $('.toggle-tab-content').removeClass('on');
+  };
+
+  function showSlideContent(slideContentDiv){
+    $('#'+slideContentDiv).addClass('on');
+    $('.'+slideContentDiv).addClass('on');
+  };
+
+  // A.2. END ---------------------------------------------
+
   // A.4. BURGER MENU -------------------------------------
 
   $('.o-hamburger').on('click', function(){
@@ -232,7 +259,7 @@ function initSwiperFunctions() {
   // A.1. HOME CAROUSEL -----------------------------------
 
   var swiper1 = new Swiper('.swiper-home', {
-    speed: 600,
+    speed: 1800,
     slidesPerView: 1,
     parallax: true,
     direction: 'vertical',
@@ -285,7 +312,46 @@ function initSwiperFunctions() {
     },
   });
 
-  // A.2. END ---------------------------------------------
+  // A.3. END ---------------------------------------------
+
+  // A.4. TEAM CAROUSEL -----------------------------------
+
+  $('.o-staff-carousel').slick({
+    infinite: true,
+    rows: 3,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          rows: 3
+        }
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          rows: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          rows: 2
+        }
+      }
+    ]
+
+
+  });
+
+  // A.4. END ---------------------------------------------
 
 }
 
@@ -346,6 +412,7 @@ $(document).ready(function() {
 
     equalheight('.reasons-block .reason-card .m-card-title');
     equalheight('.reasons-block .reason-card .m-card-body');
+    equalheight('#block-careers .o-tab .o-tab-wrapper');
 
   }
 
@@ -360,6 +427,7 @@ $(window).resize(function() {
 
     equalheight('.reasons-block .reason-card .m-card-title');
     equalheight('.reasons-block .reason-card .m-card-body');
+    equalheight('#block-careers .o-tab .o-tab-wrapper');
 
   }
 

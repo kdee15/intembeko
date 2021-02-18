@@ -64,13 +64,36 @@
   }
 }
 
+.o-staff-carousel {
+  .slick-arrow {
+    @include vertical-align(absolute);
+    width: 15px;
+    height: 15px;
+    border: 0;
+    border-radius: 30px;
+    font-size: 0;
+    background: $grey-f2;
+    cursor: pointer;
+    &:before { position: absolute; content: ''; width: 15px; height: 15px; background: $grey-f2; border-radius: 30px; bottom: -25px; left: 0; }
+    &:after { position: absolute; content: ''; width: 15px; height: 15px; background: $grey-f2; border-radius: 30px; top: -25px; left: 0; }
+    &.slick-next { right: -30px; }
+    &.slick-prev { left: -30px; }
+  }
+}
+
 // A.1. END -----------------------------------------------------------------------------------------------------------
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // B. MAX-WIDTH: 767px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-dn) {} 
+@media ($sm-dn) {
+
+  .o-staff-carousel {
+    .slick-arrow { display: none!important; }
+  }
+
+}
 
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -82,7 +105,26 @@
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {} 
+@media ($md-up) {
+
+  .o-staff-carousel {
+    .slick-arrow {
+      width: 30px;
+      height: 30px;
+      background-color: $grey-f2;
+      background-position: center;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      outline: none!important;
+      &:before { display: none; }
+      &:after { display: none; }
+      &.slick-next { right: -50px; background-image: url('../images/site/button--arrow-right.svg'); }
+      &.slick-prev { left: -50px; background-image: url('../images/site/button--arrow-left.svg'); }
+      &:hover { background-color: $grey-b3; }
+    }
+  }
+
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

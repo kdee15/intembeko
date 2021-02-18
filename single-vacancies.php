@@ -19,28 +19,32 @@ get_header();
 
 <!-- C.1. END ----------------------------------------- -->
 
-<main class="p-main page default-page">
+<main class="p-main page p-vacancy-detail">
 
-  <div class="container">
+  <!-- C.2. SECTIONS ---------------------------------- -->
 
-    <!-- C.2. SECTIONS -------------------------------- -->
+  <?php while ( have_posts() ) : the_post(); ?>
 
-    <?php while ( have_posts() ) : the_post(); ?>
-      <?php get_template_part( 'content', 'page' ); ?>
-      <?php comments_template( '', true ); ?>
-    <?php endwhile; // end of the loop. ?>
+    <section class="container">
+      <div class="row m-page-title no-gutters mb-3">
+        <h3 class="a-post-title"><?php the_title(); ?></h3>
+      </div>
 
-    <!-- C.2. END ------------------------------------- -->
+      <?php the_content(); ?>
 
-  </div>
+    </section>
 
-  <!-- C.3. FOOTER  ----------------------------------- -->
+  <?php endwhile; // end of the loop. ?>
 
-  <?php get_footer(); ?>
-
-  <!-- C.3. END --------------------------------------- -->
+  <!-- C.2. END --------------------------------------- -->
 
 </main>
+
+<!-- C.3. FOOTER  ----------------------------------- -->
+
+<?php get_footer(); ?>
+
+<!-- C.3. END --------------------------------------- -->
 
 <!-- C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 

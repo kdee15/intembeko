@@ -7,7 +7,7 @@ function initSwiperFunctions() {
   // A.1. HOME CAROUSEL -----------------------------------
 
   var swiper1 = new Swiper('.swiper-home', {
-    speed: 600,
+    speed: 1800,
     slidesPerView: 1,
     parallax: true,
     direction: 'vertical',
@@ -60,7 +60,46 @@ function initSwiperFunctions() {
     },
   });
 
-  // A.2. END ---------------------------------------------
+  // A.3. END ---------------------------------------------
+
+  // A.4. TEAM CAROUSEL -----------------------------------
+
+  $('.o-staff-carousel').slick({
+    infinite: true,
+    rows: 3,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          rows: 3
+        }
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          rows: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          rows: 2
+        }
+      }
+    ]
+
+
+  });
+
+  // A.4. END ---------------------------------------------
 
 }
 

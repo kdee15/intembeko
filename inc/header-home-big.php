@@ -9,7 +9,7 @@
 
 	<header class="o-header o-page-header big-head" id="o-header">
     <a class="m-link a-small" href="/">
-      <?php get_template_part( 'inc/svg--page-logo' ); ?>
+      <img src="<?php echo get_template_directory_uri(); ?>/dist/images/site/logo-grey-sml.png">
     </a>
 		<div class="m-breadcrumbs">
       <?php if (function_exists('the_breadcrumb')) the_breadcrumb(); ?>
@@ -28,5 +28,5 @@
   </section>
 
   <figure class="m-figure a-large">
-    <?php get_template_part( 'inc/svg--logo' ); ?>
+    <img src="<?php echo get_template_directory_uri(); ?>/dist/images/site/logo-grey-lrg.png">
   </figure>

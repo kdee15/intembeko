@@ -18,6 +18,14 @@
     'primary' => __( 'Primary Navigation', 'intembeko' )
     ) );
 
+    register_nav_menus( array(
+    'page_menu' => __( 'Page Navigation', 'intembeko' )
+    ) );
+
+    register_nav_menus( array(
+    'footer_menu' => __( 'Footer Navigation', 'intembeko' )
+    ) );
+
     // A.1.0.5. Wordpress Menu
 
     // A.1.0.6. Wordpress Stuff
@@ -81,7 +89,7 @@ function about() {
     'labels'         => $labels,
     'description'   => 'A list of About',
     'public'        => true,
-    'menu_position' => 3,
+    'menu_position' => 2,
     'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
     'has_archive'   => true,
 
@@ -91,6 +99,39 @@ function about() {
 }
 
 add_action( 'init', 'about' );
+
+// A.2.1. End -----------------------------------------------------------------------------------------------------
+
+// A.2.1. SERVICES ------------------------------------------------------------------------------------------------
+
+function services() {
+  $labels = array(
+    'Title'              => _x( 'Services', 'post type general name' ),
+    'singular_name'      => _x( 'Service', 'post type singular name' ),
+    'add_new'            => __( 'Add New', 'Service' ),
+    'add_new_item'       => __( 'Add New Service' ),
+    'edit_item'          => __( 'Edit Services' ),
+    'new_item'           => __( 'New Service' ),
+    'all_items'          => __( 'All Services' ),
+    'view_item'          => __( 'View Service' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Services'
+  );
+
+  $args = array(
+    'labels'         => $labels,
+    'description'   => 'A list of Services',
+    'public'        => true,
+    'menu_position' => 3,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
+    'has_archive'   => true,
+
+  );
+
+  register_post_type( 'services', $args );
+}
+
+add_action( 'init', 'services' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 
@@ -127,102 +168,36 @@ add_action( 'init', 'team' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 
-// A.2.1. TEAM CAROUSEL -------------------------------------------------------------------------------------------
+// A.2.1. CAREERS -------------------------------------------------------------------------------------------------
 
-function team_carousel() {
+function careers() {
   $labels = array(
-    'Title'              => _x( 'Team Carousel', 'post type general name' ),
-    'singular_name'      => _x( 'Team Carousel Pics', 'post type singular name' ),
-    'add_new'            => _x( 'Add New', 'Team Carousel Pic' ),
-    'add_new_item'       => __( 'Add New Team Carousel Pic' ),
-    'edit_item'          => __( 'Edit Team Carousel' ),
-    'new_item'           => __( 'New Team Carousel Pic' ),
-    'all_items'          => __( 'All Team Carousel Pics' ),
-    'view_item'          => __( 'View Team Carousel' ),
+    'Title'              => _x( 'Careers', 'post type general name' ),
+    'singular_name'      => _x( 'Careers', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'Career' ),
+    'add_new_item'       => __( 'Add New Career' ),
+    'edit_item'          => __( 'Edit Career' ),
+    'new_item'           => __( 'New Career' ),
+    'all_items'          => __( 'All Careers' ),
+    'view_item'          => __( 'View Career' ),
     'parent_item_colon'  => '',
-    'menu_name'          => 'Team Carousel'
+    'menu_name'          => 'Careers'
   );
 
   $args = array(
     'labels'         => $labels,
-    'description'   => 'A list of Team Carousel Pics',
+    'description'   => 'A list of Careers',
     'public'        => true,
-    'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
+    'menu_position' => 4,
+    'supports'      => array( 'title', 'editor', 'thumbnail' ),
     'has_archive'   => true,
 
   );
 
-  register_post_type( 'team_carousel', $args );
+  register_post_type( 'careers', $args );
 }
 
-add_action( 'init', 'team_carousel' );
-
-// A.2.1. End -----------------------------------------------------------------------------------------------------
-
-// A.2.1. SERVICES ------------------------------------------------------------------------------------------------
-
-function services() {
-  $labels = array(
-    'Title'              => _x( 'Services', 'post type general name' ),
-    'singular_name'      => _x( 'Service', 'post type singular name' ),
-    'add_new'            => __( 'Add New', 'Service' ),
-    'add_new_item'       => __( 'Add New Service' ),
-    'edit_item'          => __( 'Edit Services' ),
-    'new_item'           => __( 'New Service' ),
-    'all_items'          => __( 'All Services' ),
-    'view_item'          => __( 'View Service' ),
-    'parent_item_colon'  => '',
-    'menu_name'          => 'Services'
-  );
-
-  $args = array(
-    'labels'         => $labels,
-    'description'   => 'A list of Services',
-    'public'        => true,
-    'menu_position' => 7,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
-    'has_archive'   => true,
-
-  );
-
-  register_post_type( 'services', $args );
-}
-
-add_action( 'init', 'services' );
-
-// A.2.1. End -----------------------------------------------------------------------------------------------------
-
-// A.2.1. CONTACT DETAILS -----------------------------------------------------------------------------------------
-
-function branches() {
-  $labels = array(
-    'Title'              => _x( 'Branches', 'post type general name' ),
-    'singular_name'      => _x( 'Branch', 'post type singular name' ),
-    'add_new'            => _x( 'Add New', 'Branch' ),
-    'add_new_item'       => __( 'Add New Branch' ),
-    'edit_item'          => __( 'Edit Branch' ),
-    'new_item'           => __( 'New Branch' ),
-    'all_items'          => __( 'All Branches' ),
-    'view_item'          => __( 'View Branch' ),
-    'parent_item_colon'  => '',
-    'menu_name'          => 'Branches'
-  );
-
-  $args = array(
-    'labels'         => $labels,
-    'description'   => 'A list of Branches',
-    'public'        => true,
-    'menu_position' => 8,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
-    'has_archive'   => true,
-
-  );
-
-  register_post_type( 'branches', $args );
-}
-
-add_action( 'init', 'branches' );
+add_action( 'init', 'careers' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 
@@ -246,7 +221,7 @@ function partners() {
     'labels'         => $labels,
     'description'   => 'A list of Partners',
     'public'        => true,
-    'menu_position' => 8,
+    'menu_position' => 5,
     'supports'      => array( 'title', 'editor', 'thumbnail' ),
     'has_archive'   => true,
 
@@ -256,6 +231,39 @@ function partners() {
 }
 
 add_action( 'init', 'partners' );
+
+// A.2.1. End -----------------------------------------------------------------------------------------------------
+
+// A.2.1. CONTACT DETAILS -----------------------------------------------------------------------------------------
+
+function vacancies() {
+  $labels = array(
+    'Title'              => _x( 'Vacancies', 'post type general name' ),
+    'singular_name'      => _x( 'Vacancy', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'Vacancy' ),
+    'add_new_item'       => __( 'Add New Vacancy' ),
+    'edit_item'          => __( 'Edit Vacancy' ),
+    'new_item'           => __( 'New Vacancy' ),
+    'all_items'          => __( 'All Vacancies' ),
+    'view_item'          => __( 'View Vacancy' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Vacancies'
+  );
+
+  $args = array(
+    'labels'         => $labels,
+    'description'   => 'A list of Vacancies',
+    'public'        => true,
+    'menu_position' => 7,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content', 'excerpt' ),
+    'has_archive'   => true,
+
+  );
+
+  register_post_type( 'vacancies', $args );
+}
+
+add_action( 'init', 'vacancies' );
 
 // A.2.1. End -----------------------------------------------------------------------------------------------------
 

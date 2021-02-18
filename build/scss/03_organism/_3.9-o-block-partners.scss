@@ -1,14 +1,44 @@
-// 3. ORGANISM [ 3.9. PARTNERS BLOCK ] ################################################################################
+// 3. ORGANISM [ 3.6. VISION BLOCK ] ##################################################################################
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
 .o-block {
-  &.block-partners { background-color: $grey-b3; padding: $base-xl 0;
-    .m-figure { margin: 0; padding: 0; display: flex; height: 100%; flex-direction: column; justify-content: center;
-      img { width: 90%; height: auto; display: block; margin: 0 auto; filter: grayscale(100%) sepia(30%); }
+  &.block-partners { background: white; padding-top: $base-xl;
+
+    .o-partner-row {
+      .m-partner-logo { align-self: center;
+        img { max-width: 100%; height: auto; width: 100%; }
+      }
     }
+
+    .o-services-list {
+      .card { margin-bottom: $base-md; background: transparent;
+        .o-card { margin-right: $base-sm; background-color: black;
+          &.o-service-item {
+            .m-card-body { transform: translateY(80%);
+              p { left: 0; opacity: 0; margin-bottom: $base-sm; width: 50% }
+              .m-logo {
+                @include aspect-ratio(45%, 100%); position: absolute; top: 40%; right: 15px;
+                background-size: contain; background-repeat: no-repeat; background-position: top center;
+              }
+            }
+
+            &:hover {
+              .m-card-body { transform: translateY(0%);
+                .a-card-text, p { position: relative; opacity: 1;  }
+              }
+            }
+          }
+        }
+
+        &:nth-child(even) {
+          .o-card { margin-right: 0;  margin-left: $base-sm; }
+        }
+      }
+    }
+
   }
 }
 
@@ -18,25 +48,52 @@
 
 // B. MAX-WIDTH: 767px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-dn) {} 
+@media ($sm-dn) {}
 
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-up) {} 
+@media ($sm-up) {}
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {}
+@media ($md-up) {
+
+  .o-block {
+    &.block-partners {
+
+      .o-services-list {
+        .card {
+          .o-card {
+            &.o-service-item {
+              .m-card-image { @include aspect-ratio (100%, 60%);
+                .a-image, img { width: 100%; height: auto; }
+              }
+              .m-card-body {
+                p {}
+              }
+              &:hover {
+                .m-card-body {
+                  .a-card-text, p {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($lg-up) {} 
+@media ($lg-up) {}
 
 // E. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

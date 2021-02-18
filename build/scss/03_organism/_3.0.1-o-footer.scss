@@ -4,13 +4,25 @@
 
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
-.o-footer { background-color: $grey-80; padding: $base-lg 0;
+.o-footer { background-color: black; padding: $base-lg 0;
   h6 { color: $grey-f2; }
   p { color: white; }
   a { color: white;
     &:hover { color: $grey-f2; }
   }
-
+  .a-footer-image { width: 100%; max-width: 200px; margin: 0 auto 30px; display: block; }
+  .footer-navigation {
+    .footer-menu { list-style-type: none; margin: 0; padding: 0;
+      .menu-item { margin-bottom: 12px;
+        a { text-decoration: none; outline: none!important; position: relative; font-weight: 12px;
+          &:after { position: absolute; content: ''; background-color: white; height: 2px; width: 100%; bottom: -2px; @include center-align();  transition: 0.3s;}
+          &:hover {
+            &:after { width: 0; transition: 0.3s; }
+          }
+        }
+      }
+    }
+  }
   .a-credits { font-size: 10px; font-weight: 300; margin-top: $base-xl; }
 }
 
@@ -26,13 +38,24 @@
 
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-up) {} 
+@media ($sm-up) {
+  .o-footer {
+    .a-footer-image { width: 50%; max-width: 200px; margin: 0; display: inline-block; }
+    .a-credits { padding: 0; }
+  }
+}
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {} 
+@media ($md-up) {
+  .o-footer {
+    .footer-menu { display: flex; width: 100%;
+      .menu-item { flex: 1; }
+    }
+  }
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -64,7 +64,7 @@
         text-overflow: ellipsis;
         transition: 0.5s;
       }
-
+      .m-logo { transition: 0.6s; transform: translateY(-10%); }
     }
 
     &:hover { transition: 0.3s ease;
@@ -74,6 +74,24 @@
       .m-card-body { top: 0; background: rgba(0,0,0,0.6); transition: 0.3s ease; transform: translateY(0%);
         .a-card-header { margin: 0; transition: 0.8s; top: 20%; }
         .a-card-text, p { white-space: normal; transition: 0.6s; height: auto; top: 40%; }
+        .m-logo { transition: 0.6s; transform: translateY(0); }
+      }
+    }
+
+  }
+
+  // A.1.1.1. END -----------------------------------------
+
+  // A.1.1.1. END -----------------------------------------
+
+  &.vacancy-card {
+    .m-card-body { background-color: $grey-f2;
+      .a-card-title { background-color: $grey-80; padding: 8px 15px; display: block; color: white;
+        &:hover { text-decoration: none!important; background-color: $grey-b3; }
+      }
+      .m-text-wrapper { display: block; padding: 15px 15px 0; }
+      .a-card-link { display: inline-block; margin: 0 15px 15px; color: black;
+        &:hover { color: $grey-80; }
       }
     }
 

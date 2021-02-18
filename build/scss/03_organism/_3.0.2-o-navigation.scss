@@ -5,10 +5,13 @@
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
 .o-site-navigation { position: fixed; z-index: 1000; top: 0; transform: translateY(-100%); right: 70px; opacity: 0;
+  .menu-page-menu-container,
   .menu-primary-container {
+    .page-menu,
     .menu { list-style-type: none; text-align: right; margin: 0; padding: 0;
-      .menu-item { display: inline-block;
+      .menu-item { display: inline-block; margin-right: 12px;
         a { color: black; text-shadow: 0 0 3px white; }
+        &:last-child { margin-right: 0; }
       }
     }
   }

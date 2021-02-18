@@ -33,9 +33,11 @@ get_header();
 
     <?php get_template_part( 'section-services'); ?>
 
+    <?php get_template_part( 'section-team'); ?>
+
     <?php get_template_part( 'section-partners'); ?>
 
-    <?php get_template_part( 'section-team'); ?>
+    <?php get_template_part( 'section-careers'); ?>
 
     <!-- C.2. END ------------------------------------- -->
 

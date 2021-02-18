@@ -1,0 +1,105 @@
+// 3. ORGANISM [ 3.10. CAREERS BLOCK ] ################################################################################
+
+// A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
+
+.o-block {
+  &.block-careers { background: $grey-f2; padding-top: $base-xl; padding-bottom: $base-xxxl;
+    .m-video-wrapper { max-width: 600px; margin-bottom: $base-xxl; }
+    .o-tab-nav { display: none; padding: 0; margin: 0; width: 100%; list-style-type: none;
+      .m-tab-link { flex: 1; text-align: center; cursor: pointer; background: none; transition: 0.3s;
+        span { display: block; padding: 8px 5px; position: relative; font-family: $limo; font-size: 18px;
+          &:after { position: absolute; content: ''; background-color: $grey-80; height: 2px; width: 86%; bottom: 0; @include center-align();  transition: 0.3s;}
+        }
+        &:hover {
+          span {
+            &:after { width: 0; font-weight: 600; transition: 0.3s; }
+          }
+        }
+        &.on {
+          span {
+            &:after { width: 0; font-weight: 600; transition: 0.3s; }
+          }
+          //&:hover {
+          //  span {
+          //    &:after { width: 96%; font-weight: 600; transition: 0.3s; }
+          //  }
+          //}
+        }
+      }
+    }
+    .o-tab {
+      .o-tab-wrapper { padding: 40px 0 0; }
+    }
+    .mobile-tab { display: block; width: 100%; padding: 20px; position: relative; cursor: pointer; transition: 0.3s;
+      &.on { transition: 0.3s;
+        .a-caret { transform: translateY(-50%) rotate(-90deg); transition: 0.3s; }
+      }
+    }
+    .toggle-tab-content { display: none; width: 100%; padding: 0 20px;
+      &.on { display: block; }
+    }
+  }
+}
+
+// A.1. END -----------------------------------------------------------------------------------------------------------
+
+// A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// B. MAX-WIDTH: 767px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@media ($sm-dn) {
+
+  .o-block {
+    &.block-careers { padding-bottom: 0;
+      .m-video-wrapper { margin-bottom: 0; }
+      .toggle-tab-content {
+        &#tab-3 { padding-bottom: 20px; }
+      }
+    }
+  }
+
+}
+
+// B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@media ($sm-up) {
+
+  .o-block {
+    &.block-careers {
+      .o-tab-nav { display: flex; }
+      .mobile-tab { display: none; }
+      .toggle-tab-content { opacity: 0; transition: 0.3s; position: relative; width: 0; height: 0; overflow: hidden;
+        &.on { opacity: 1; transition: 0.3s; width: 100%; height: auto; }
+      }
+    }
+  }
+
+}
+
+// C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@media ($md-up) {
+
+  .o-block {
+    &.block-careers {
+
+    }
+  }
+
+}
+
+// D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@media ($lg-up) {}
+
+// E. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// END OF FILE ########################################################################################################

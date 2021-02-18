@@ -16,7 +16,7 @@
   </div>
 
     <?php if ( has_nav_menu( 'primary' ) ) : ?>
-      <nav id="site-navigation" class="main-navigation navbar-nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'intembeko' ); ?>">
+      <nav id="site-navigation" class="main-navigation navbar-nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'kdee' ); ?>">
         <?php
         wp_nav_menu( array(
           'theme_location' => 'primary',

@@ -55,6 +55,33 @@ function initToggleFunctions() {
 
   // A.2. END ---------------------------------------------
 
+  // A.2. TOGGLE TAB --------------------------------------
+
+  var slideContent = '';
+  $('.toggle-tab').on('click', function(){
+    console.log('hello!');
+    slideContent = $(this).attr('name');
+    if($('#'+slideContent).hasClass('on')){
+      // $('#'+slideContent).removeClass('on');
+      // $('.'+slideContent).removeClass('on');
+    }else{
+      hideSlideContent();
+      showSlideContent(slideContent);
+    }
+  });
+
+  function hideSlideContent(){
+    $('.toggle-tab').removeClass('on');
+    $('.toggle-tab-content').removeClass('on');
+  };
+
+  function showSlideContent(slideContentDiv){
+    $('#'+slideContentDiv).addClass('on');
+    $('.'+slideContentDiv).addClass('on');
+  };
+
+  // A.2. END ---------------------------------------------
+
   // A.4. BURGER MENU -------------------------------------
 
   $('.o-hamburger').on('click', function(){

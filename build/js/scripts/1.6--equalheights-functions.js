@@ -54,6 +54,7 @@ $(document).ready(function() {
 
     equalheight('.reasons-block .reason-card .m-card-title');
     equalheight('.reasons-block .reason-card .m-card-body');
+    equalheight('#block-careers .o-tab .o-tab-wrapper');
 
   }
 
@@ -68,6 +69,7 @@ $(window).resize(function() {
 
     equalheight('.reasons-block .reason-card .m-card-title');
     equalheight('.reasons-block .reason-card .m-card-body');
+    equalheight('#block-careers .o-tab .o-tab-wrapper');
 
   }
 

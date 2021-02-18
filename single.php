@@ -17,11 +17,9 @@ get_header();
 
 <?php get_template_part( 'inc/page-header' ); ?>
 
-<?php get_template_part( 'inc/navigation-page' ); ?>
-
 <!-- C.1. END ----------------------------------------- -->
 
-<main class="p-main page single">
+<main class="p-main page p-vacancy-detail">
 
   <!-- C.1. PAGE HEADER ------------------------------- -->
 

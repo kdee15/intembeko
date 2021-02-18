@@ -9,6 +9,18 @@
   
 }
 
+.a-caret {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  width: 20px;
+  height: 20px;
+  right: 20px;
+  background-image: url('../images/site/button--arrow-right.svg');
+  background-size: 20px 20px;
+  transition: 0.3s;
+}
+
 // A.1. END -----------------------------------------------
 
 // A.2. SPECIFIC ICONS ------------------------------------
