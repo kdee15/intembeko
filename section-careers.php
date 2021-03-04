@@ -68,5 +68,9 @@
       }
       ?>
 
+    <div class="row o-block-footer">
+      <a href="<?php echo get_site_url(); ?>/?page_id=686" class="a-text-link"><span>VIEW CURRENT VACANCIES HERE</span></a>
+    </div>
+
   </div>
 </section>

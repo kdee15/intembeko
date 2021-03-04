@@ -41,7 +41,9 @@
 @media ($sm-up) {
   .o-footer {
     .a-footer-image { width: 50%; max-width: 200px; margin: 0; display: inline-block; }
-    .a-credits { padding: 0; }
+    .m-footer-bottom { align-items: baseline;
+      .a-credits { padding: 0; }
+    }
   }
 }
 

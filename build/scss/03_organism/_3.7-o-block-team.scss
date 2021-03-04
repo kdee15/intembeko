@@ -68,20 +68,29 @@
 
 .modal  {
 
+  .container { height: 100%;
+    .m-modal-body { height: 100%; }
+  }
+
   @include position (fixed, 0); text-align: center; background: rgba($black, 0.9); z-index: 1000; display: none;
 
   h2 { color: $white; margin: 0; margin-top: $base; }
   h3 { color: $white; margin: 0; margin-bottom: $base; }
 
-  .copy {
-    p { color: $white; line-height: normal; }
+  .m-modal-copy {
+    *, p { color: $white; line-height: normal; }
   }
 
-  &.on { display: block; overflow: hidden;  }
+  &.on { display: block; overflow: hidden; }
 
 }
 
 // A.1.4. END
+// A.1.5. The Team Carousel
+body.modal-open {
+
+}
+// A.1.5. END
 
 // A.1. END -----------------------------------------------------------------------------------------------------------
 
@@ -94,7 +103,22 @@
 
 // B. MAX-WIDTH: 767px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-dn) {} 
+@media ($sm-dn) {
+
+  .o-block {
+    .m-modal-body { align-content: end;
+      .m-modal-head {
+        img { max-width: 200px; margin: 50px auto 0; }
+        h2 { font-size: 1.4rem; }
+        h3 { font-size: 1rem; }
+        .m-modal-copy {
+          *, p { font-size: 0.9rem; }
+        }
+      }
+    }
+  }
+
+}
 
 // B. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

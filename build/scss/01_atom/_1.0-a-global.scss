@@ -7,7 +7,7 @@
 html, body { font-family: $default; font-weight: 100; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
 
 body {
-  &.modal-open { @include position(absolute, 0); overflow: hidden; }
+  //&.modal-open { @include position(absolute, 0); overflow: hidden; }
 }
 
 
@@ -35,6 +35,17 @@ body {
 
 .toggle-tab { background: $grey-f2;
   &.on { background: white; }
+}
+
+.a-text-link { text-align: center; transition: 0.3s; text-decoration: none!important; color: black;
+  span { display: block; padding: 8px 0; position: relative; font-family: $limo; font-size: 18px;
+    &:after { position: absolute; content: ''; background-color: $grey-80; height: 2px; width: 100%; bottom: 0; @include center-align();  transition: 0.3s;}
+  }
+  &:hover { color: $grey-80;
+    span {
+      &:after { width: 0; font-weight: 600; transition: 0.3s; }
+    }
+  }
 }
 
 // A.3. END -----------------------------------------------

@@ -23,8 +23,11 @@
         </div>
 
       </div>
+      <div class="row m-footer-bottom">
+        <p class="col-12 col-md-8 a-fsp">Intembeko is an authorised FSP</p>
+        <p class="col-12 col-md-4 a-credits">&copy; Copyright 2021. Site by <a href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
+      </div>
 
-      <p class="col-12 a-credits">&copy; Copyright 2021. Site by <a href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
         
     </div>
     
