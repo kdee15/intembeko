@@ -291,35 +291,49 @@ add_action( 'widgets_init', 'mymenu_widgets_init' );
 
 // A.1.0.1. REGISTER SIDEBAR
 
-function social_sidebar_widgets_init() {
+function footer_1_widgets_init() {
 
   register_sidebar( array(
-    'name' => 'social sidebar widget',
-    'id' => 'social_sidebar',
-    'before_widget' => '<div>',
+    'name' => 'footer column 1 widget',
+    'id' => 'footer_1',
+    'before_widget' => '<div class="m-footer-col m-col-1">',
     'after_widget' => '</div>',
-    'before_title' => '<h2 class="rounded">',
-    'after_title' => '</h2>',
   ) );
 }
 
-add_action( 'widgets_init', 'social_sidebar_widgets_init' );
+add_action( 'widgets_init', 'footer_1_widgets_init' );
 
 // A.1.0.1. END
 
 // A.1.0.2. Twitter Widget
 
-function arphabet_widgets_init() {
+function footer_2_widgets_init() {
 
   register_sidebar( array(
-    'name' => 'insta widget',
-    'id' => 'instagram',
-    'before_widget' => '<div class="o-insta-feed">',
+    'name' => 'footer column 2 widget',
+    'id' => 'footer_2',
+    'before_widget' => '<div class="m-footer-col m-col-2">',
     'after_widget' => '</div>',
   ) );
 }
 
-add_action( 'widgets_init', 'arphabet_widgets_init' );
+add_action( 'widgets_init', 'footer_2_widgets_init' );
+
+// A.1.0.2. Twitter Widget
+
+// A.1.0.2. Twitter Widget
+
+function footer_3_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'footer column 3 widget',
+    'id' => 'footer_3',
+    'before_widget' => '<div class="m-footer-col m-col-3">',
+    'after_widget' => '</div>',
+  ) );
+}
+
+add_action( 'widgets_init', 'footer_3_widgets_init' );
 
 // A.1.0.2. Twitter Widget
 

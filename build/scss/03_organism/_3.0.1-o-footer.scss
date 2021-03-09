@@ -10,11 +10,37 @@
   a { color: white;
     &:hover { color: $grey-f2; }
   }
-  .a-footer-image { width: 100%; max-width: 200px; margin: 0 auto 30px; display: block; }
+
+  .a-text-link {
+    text-align: center;
+    transition: 0.3s;
+    text-decoration: none!important;
+    color: white;
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    &:after { position: absolute; content: ''; background-color: $grey-80; height: 2px; width: 100%; bottom: 0; @include center-align();  transition: 0.3s;}
+
+    &:hover { color: $grey-80;
+      &:after { width: 0; font-weight: 600; transition: 0.3s; }
+    }
+  }
+
+  .m-footer-col {
+    &.m-col-1 {
+      a { display: block; max-width: 250px; margin: 0 auto;
+        img { width: 100%; margin: 0 auto 30px; display: block }
+      }
+    }
+    &.col-2
+    &.fsp { margin-top: $base-md;
+      .custom-html-widget { color: white; }
+    }
+  }
   .footer-navigation {
     .footer-menu { list-style-type: none; margin: 0; padding: 0;
       .menu-item { margin-bottom: 12px;
-        a { text-decoration: none; outline: none!important; position: relative; font-weight: 12px;
+        a { text-decoration: none; outline: none!important; position: relative; font-size: 18px;
           &:after { position: absolute; content: ''; background-color: white; height: 2px; width: 100%; bottom: -2px; @include center-align();  transition: 0.3s;}
           &:hover {
             &:after { width: 0; transition: 0.3s; }
@@ -23,7 +49,7 @@
       }
     }
   }
-  .a-credits { font-size: 10px; font-weight: 300; margin-top: $base-xl; }
+  .a-credits { font-size: 10px; font-weight: 300; }
 }
 
 // A.1. END -----------------------------------------------------------------------------------------------------------
@@ -39,12 +65,7 @@
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 @media ($sm-up) {
-  .o-footer {
-    .a-footer-image { width: 50%; max-width: 200px; margin: 0; display: inline-block; }
-    .m-footer-bottom { align-items: baseline;
-      .a-credits { padding: 0; }
-    }
-  }
+  .o-footer {}
 }
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,11 +73,7 @@
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 @media ($md-up) {
-  .o-footer {
-    .footer-menu { display: flex; width: 100%;
-      .menu-item { flex: 1; }
-    }
-  }
+  .o-footer {}
 }
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

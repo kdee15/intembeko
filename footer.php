@@ -6,10 +6,10 @@
     
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-4">
-          <img class="a-footer-image" src="<?php echo get_template_directory_uri(); ?>/dist/images/site/logo-wht-lrg.png">
+        <div class="col-12 col-md-3">
+          <?php dynamic_sidebar( 'footer_1' ); ?>
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-4 offset-md-1">
           <?php if ( has_nav_menu( 'footer_menu' ) ) : ?>
             <nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Navigation', 'intembeko' ); ?>">
               <?php
@@ -20,12 +20,18 @@
               ?>
             </nav>
           <?php endif; ?>
+          <div class="m-footer-col fsp">
+            <?php dynamic_sidebar( 'footer_3' ); ?>
+          </div>
+
+        </div>
+        <div class="col-12 col-md-4">
+          <?php dynamic_sidebar( 'footer_2' ); ?>
+        </div>
+        <div class="col-12">
+          <p class="a-credits">&copy; Copyright 2021. Site by <a href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
         </div>
 
-      </div>
-      <div class="row m-footer-bottom">
-        <p class="col-12 col-md-8 a-fsp">Intembeko is an authorised FSP</p>
-        <p class="col-12 col-md-4 a-credits">&copy; Copyright 2021. Site by <a href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
       </div>
 
         
