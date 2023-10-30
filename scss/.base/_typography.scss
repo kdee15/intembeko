@@ -10,6 +10,19 @@ $font: "Quicksand", sans-serif;
 $exo: "Exo 2", sans-serif;
 $cormorant: "Cormorant", serif;
 
+@font-face {
+  font-family: Limo;
+  src: url("../../fonts/champagne_limousines.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Limo-Bold;
+  src: url("../../fonts/champagne_limousines_b.ttf") format("truetype");
+}
+
+$limo: "Limo", sans-serif;
+$limo-b: "Limo-Bold", sans-serif;
+
 // A.2. RESPONSIVE FONT VARIABLES -------------------------
 // font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
 
