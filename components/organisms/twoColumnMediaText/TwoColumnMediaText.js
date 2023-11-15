@@ -86,7 +86,7 @@ function TwoColumnMediaText({ contentModule }) {
                     src={videoLink}
                     className={`${classes.aVideo}`}
                     title="YouTube video player"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
