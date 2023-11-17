@@ -1,4 +1,5 @@
 import Image from "next/dist/client/image";
+import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import classes from "./Footer.module.scss";
 
@@ -12,7 +13,7 @@ export default function Footer(contentModule) {
   return (
     <section className={classes.oFooter}>
       <div className={`${classes.oContainer} container`}>
-        <div className={`${classes.oRow} row`}>
+        <div className={`${classes.oRow} row no-gutters`}>
           <div className={`${classes.oCol} col-12 col-md-4`}>
             <Image
               className={`${classes.aImage}`}
@@ -26,24 +27,32 @@ export default function Footer(contentModule) {
             />
           </div>
           <div className={`${classes.oCol} col-12 col-md-4`}>
-            <div>{documentToReactComponents(address.json)}</div>
-            <ul>
+            <div className={`${classes.mAddress} fnt18`}>
+              {documentToReactComponents(address.json)}
+            </div>
+            <ul className={`${classes.oNavigation} ${classes.footerMenu}`}>
               {contactMenu.map((item, index) => (
-                <li key={index} className={`${classes.mLinks}`}>
-                  {item.label}
+                <li key={index} className={`${classes.mMenuItem} fnt18`}>
+                  <Link href={item.url}>
+                    <a className={classes.oLinkItem}>{item.label}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
           <div className={`${classes.oCol} col-12 col-md-4`}>
-            <ul>
+            <ul className={`${classes.oNavigation} ${classes.footerMenu}`}>
               {legalMenu.map((item, index) => (
-                <li key={index} className={`${classes.mLinks}`}>
-                  {item.label}
+                <li key={index} className={`${classes.mMenuItem} fnt18`}>
+                  <Link href={item.url}>
+                    <a className={classes.oLinkItem}>{item.label}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <div>{documentToReactComponents(copy.json)}</div>
+            <div className={`${classes.mCredits}`}>
+              {documentToReactComponents(copy.json)}
+            </div>
           </div>
         </div>
       </div>
