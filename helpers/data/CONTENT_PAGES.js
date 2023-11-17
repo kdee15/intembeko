@@ -13,6 +13,9 @@ export const PAGE_CONTENT = `
       items {
         title
         slug
+        copy {
+          json
+        }
       }
     }
     componentFooter (id:"5ZLL8tPLg3SxGaJu0seCjp") {

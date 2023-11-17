@@ -1,4 +1,6 @@
 import Footer from "../../components/blocks/footer/Footer";
+import Router from "next/router";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import classes from "./Page.module.scss";
 
 const {
@@ -15,13 +17,29 @@ const { PAGE_CONTENT, PAGE_SLUG } = require("../../helpers/data/CONTENT_PAGES");
  */
 
 export default function Page({ page, pageFooter }) {
-  const { title } = page;
+  console.log("jobs", page);
+  const { title, copy } = page;
 
   return (
-    <div className={classes.oProductPage}>
+    <div className={classes.oPage}>
       <div className={`container`}>
         <div className={`row`}>
-          <div className={`${classes.oImage} col-12 col-md-6`}>1 {title}</div>
+          <div className={`${classes.oCol} col`}>
+            <h1 className={`${classes.aTitle}`}>{title}</h1>
+          </div>
+        </div>
+        <div className={`row`}>
+          <div className={`${classes.oCol} col`}>
+            <div className={`${classes.mBody}`}>
+              {documentToReactComponents(copy.json)}
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${classes.aTextLink} aTextLink fnt24`}
+          onClick={() => Router.back()}
+        >
+          BACK
         </div>
       </div>
       <Footer {...pageFooter} />

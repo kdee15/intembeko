@@ -9,78 +9,82 @@
 // A.0. END: IMPORTS --------------------------------------
 
 // A.1. PAGE BASE STYLES ----------------------------------
-
-.oProductPage {
-  position: relative;
-}
-
-.oImage {
-  background-color: white;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.oCopy {
-  background-color: #f4f4f4;
-  .oWrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 30px 10px;
-    .mCopy {
-      padding: 50px 0 20px;
-    }
-    .aPrice {
-      font-weight: 800;
+.oVacanciesPage,
+.oPage {
+  padding: 100px 0 0;
+  .aTextLink {
+    margin-bottom: 50px;
+    display: inline-block;
+    cursor: pointer;
+    &:after {
+      background-color: black;
     }
   }
 }
 
-.oBlockRow {
-  margin-top: 50px;
-}
-
-// A.1. END -----------------------------------------------
-// A.1. END -----------------------------------------------
-
-.oBrandCollection {
-  margin-bottom: 100px;
-}
-
 .aTitle {
-  margin: 50px auto 30px;
-  text-align: center;
+  margin-bottom: 25px;
 }
 
-.mImageSmall {
-  background-size: cover;
-  background-position: bottom center;
-  height: 100%;
-  width: 100%;
+.mBody {
+  margin-bottom: 100px;
+  p {
+    margin-bottom: 15px;
+  }
 }
 
-.oColRight {
-  .oCol {
-    height: 50%;
-    padding: 0;
-    &.oColVideo {
-      padding: 0;
-    }
-    .oRowScaled {
+// A.1. END -----------------------------------------------
+
+// A.2. VACANCIES PAGE ------------------------------------
+
+.oVacanciesPage {
+  .oColJobList {
+    min-width: 25%;
+    .oCard {
+      display: flex;
+      flex-direction: column;
       height: 100%;
-      .oColImageSmall,
-      .oColProductLink {
-        height: 100%;
+      .mHead {
+        flex: 1 1 15%;
+        padding: 10px;
+        background-color: $grey80;
+        transition: 0.3s;
+        .aLink {
+          display: block;
+          text-decoration: none;
+          color: white;
+          transition: 0.6s;
+        }
+        &:hover {
+          background-color: black;
+          transition: 0.6s;
+          .aLink {
+            transform: scale(1.02);
+            transition: 0.3s;
+          }
+        }
+      }
+      .mBody {
+        flex: 3 3 90%;
+        padding: 10px 10px 30px;
+        background-color: #cececf;
+        position: relative;
+        .mFooter {
+          position: absolute;
+          bottom: 10px;
+          .aLink {
+            color: black;
+            &:after {
+              background-color: black;
+            }
+          }
+        }
       }
     }
   }
 }
 
-.oLinkItem {
-  display: inline;
-  text-decoration: none;
-}
-
-// A.1. END -----------------------------------------------
+// A.2. END -----------------------------------------------
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

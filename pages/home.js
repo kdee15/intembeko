@@ -58,6 +58,15 @@ export default function Home({ Page, PageFooter }) {
       <ImageCarousel contentModule={partnerLogos} />
       <VideoPlayer contentModule={videoPlayer} />
       <TabbedView contentModule={tabbedCareers} />
+      <div className={`container`}>
+        <div className={`row`}>
+          <div className={`col mVacancyCtaBlock`}>
+            <a href="/vacancies" class="aTextLink fnt18">
+              <span>VIEW CURRENT VACANCIES HERE</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <Footer {...PageFooter} />
     </div>
   );

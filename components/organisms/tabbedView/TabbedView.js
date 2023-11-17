@@ -19,7 +19,7 @@ export default function TabbedView(contentModule) {
       <Tabs>
         <TabList className={classes.oTabs}>
           {tabs.map((item, index) => (
-            <Tab key={index} className={`${classes.mTab}`}>
+            <Tab key={index} className={`${classes.mTab} fnt18`}>
               <span>{item.fields.title}</span>
             </Tab>
           ))}

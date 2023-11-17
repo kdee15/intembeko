@@ -6,34 +6,15 @@
 
 // A.1. END -----------------------------------------------
 
-.a-responsive-image {
-  max-width: 100%;
-  height: auto;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.aTextLink {
-  text-decoration: none;
-  outline: none !important;
-  position: relative;
-  font-weight: 12px;
-  &:after {
-    position: absolute;
-    content: "";
-    background-color: white;
-    height: 2px;
-    width: 100%;
-    bottom: -2px;
-    @include center-align();
-    transition: 0.3s;
-  }
-  &:hover {
+.mVacancyCtaBlock {
+  display: block;
+  margin: 20px auto 150px;
+  text-align: center;
+  a {
+    font-family: $limo;
+    color: black;
     &:after {
-      width: 0;
-      transition: 0.3s;
+      background-color: black;
     }
   }
 }

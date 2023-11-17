@@ -1,4 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Router from "next/router";
 import Footer from "../../components/blocks/footer/Footer";
 import classes from "./Page.module.scss";
 
@@ -28,6 +29,17 @@ export default function Page({ page, pageFooter }) {
         <div className={`row`}>
           <div className={`${classes.mBody} col-12`}>
             {documentToReactComponents(copy.json)}
+          </div>
+        </div>
+
+        <div className={`${classes.oRow} row`}>
+          <div className={`${classes.oCol} col`}>
+            <div
+              className={`${classes.aTextLink} aTextLink fnt24`}
+              onClick={() => Router.back()}
+            >
+              BACK
+            </div>
           </div>
         </div>
       </div>
