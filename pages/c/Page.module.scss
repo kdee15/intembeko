@@ -10,75 +10,23 @@
 
 // A.1. PAGE BASE STYLES ----------------------------------
 
-.oProductPage {
-  position: relative;
-}
-
-.oImage {
-  background-color: white;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.oCopy {
-  background-color: #f4f4f4;
-  .oWrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 30px 10px;
-    .mCopy {
-      padding: 50px 0 20px;
-    }
-    .aPrice {
-      font-weight: 800;
-    }
-  }
-}
-
-.oBlockRow {
-  margin-top: 50px;
-}
-
-// A.1. END -----------------------------------------------
-// A.1. END -----------------------------------------------
-
-.oBrandCollection {
-  margin-bottom: 100px;
+.oPage {
+  padding: 100px 0 0;
 }
 
 .aTitle {
-  margin: 50px auto 30px;
-  text-align: center;
+  margin-bottom: 25px;
 }
 
-.mImageSmall {
-  background-size: cover;
-  background-position: bottom center;
-  height: 100%;
-  width: 100%;
-}
-
-.oColRight {
-  .oCol {
-    height: 50%;
-    padding: 0;
-    &.oColVideo {
-      padding: 0;
-    }
-    .oRowScaled {
-      height: 100%;
-      .oColImageSmall,
-      .oColProductLink {
-        height: 100%;
-      }
-    }
+.mBody {
+  margin-bottom: 100px;
+  p {
+    margin-bottom: 15px;
   }
 }
 
-.oLinkItem {
-  display: inline;
-  text-decoration: none;
-}
+// A.1. END -----------------------------------------------
+// A.1. END -----------------------------------------------
 
 // A.1. END -----------------------------------------------
 

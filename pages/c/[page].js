@@ -1,3 +1,4 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Footer from "../../components/blocks/footer/Footer";
 import classes from "./Page.module.scss";
 
@@ -15,13 +16,19 @@ const { PAGE_CONTENT, PAGE_SLUG } = require("../../helpers/data/CONTENT_PAGES");
  */
 
 export default function Page({ page, pageFooter }) {
-  const { title } = page;
+  const { title, copy } = page;
 
   return (
-    <div className={classes.oProductPage}>
+    <div className={classes.oPage}>
       <div className={`container`}>
         <div className={`row`}>
-          <div className={`${classes.oImage} col-12 col-md-6`}>1 {title}</div>
+          <h1 className={`${classes.aTitle} col-12`}>{title}</h1>
+        </div>
+
+        <div className={`row`}>
+          <div className={`${classes.mBody} col-12`}>
+            {documentToReactComponents(copy.json)}
+          </div>
         </div>
       </div>
       <Footer {...pageFooter} />

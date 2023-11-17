@@ -4,6 +4,9 @@ export const PAGE_CONTENT = `
       items {
         title
         slug
+        copy {
+          json
+        }
       }
     }
     pageVacanciesCollection(where: { slug: $slug }, limit: 1) {
