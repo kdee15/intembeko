@@ -52,7 +52,7 @@ export async function getStaticProps({ params }) {
   }
 
   const { data } = await result.json();
-  const [pageData] = data.pagePageCollection.items;
+  const [pageData] = data.pageVacanciesCollection.items;
   const pageFooter = data.componentFooter;
 
   return {
@@ -77,7 +77,7 @@ export async function getStaticPaths() {
   }
 
   const { data } = await result.json();
-  const pageSlug = data.pagePageCollection.items;
+  const pageSlug = data.pageVacanciesCollection.items;
   const paths = pageSlug.map(({ slug }) => {
     return {
       params: { page: slug },

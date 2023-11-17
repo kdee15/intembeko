@@ -7,6 +7,7 @@ import TitleImageCopyCardCarousel from "../components/organisms/titleImageCopyCa
 import VideoPlayer from "../components/organisms/videoPlayer/VideoPlayer";
 import TabbedView from "../components/organisms/tabbedView/TabbedView";
 import ImageCarousel from "../components/organisms/imageCarousel/ImageCarousel";
+import Footer from "../components/blocks/footer/Footer";
 const { C_SPACE_ID, C_DELIVERY_KEY } = require("../helpers/contentful-config");
 
 export async function getStaticProps(context) {
@@ -23,15 +24,21 @@ export async function getStaticProps(context) {
 
     .then((entries) => entries.items);
 
+  const resFooter = await client.getEntries({
+    content_type: "componentFooter",
+    include: 10,
+  });
+
   return {
     props: {
       Page: resPage,
+      PageFooter: resFooter.items[0].fields,
     },
     revalidate: 1,
   };
 }
 
-export default function Home({ Page }) {
+export default function Home({ Page, PageFooter }) {
   const heroBanner = Page[0].fields.components[0].fields;
   const visionBlock = Page[0].fields.components[1].fields;
   const missionBlock = Page[0].fields.components[2].fields;
@@ -51,6 +58,7 @@ export default function Home({ Page }) {
       <ImageCarousel contentModule={partnerLogos} />
       <VideoPlayer contentModule={videoPlayer} />
       <TabbedView contentModule={tabbedCareers} />
+      <Footer {...PageFooter} />
     </div>
   );
 }

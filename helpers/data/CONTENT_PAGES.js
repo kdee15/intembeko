@@ -6,6 +6,12 @@ export const PAGE_CONTENT = `
         slug
       }
     }
+    pageVacanciesCollection(where: { slug: $slug }, limit: 1) {
+      items {
+        title
+        slug
+      }
+    }
     componentFooter (id:"5ZLL8tPLg3SxGaJu0seCjp") {
       title
       logo {
@@ -39,9 +45,14 @@ export const PAGE_CONTENT = `
 export const PAGE_SLUG = `
 query {
   pagePageCollection {
-      items {
-        slug
-      }
+    items {
+      slug
     }
+  }
+  pageVacanciesCollection {
+    items {
+      slug
+    }
+  }
 }
 `;

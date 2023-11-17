@@ -20,6 +20,11 @@
     }
   }
 
+  .mImage {
+    max-width: 250px;
+    margin: 0 auto 50px;
+  }
+
   .mAddress {
     margin-bottom: 30px;
   }
@@ -27,7 +32,7 @@
   .oNavigation {
     &.footerMenu {
       list-style-type: none;
-      margin: 0;
+      margin: 0 0 $base-lg 0;
       padding: 0;
       .mMenuItem {
         margin-bottom: 12px;
@@ -58,13 +63,18 @@
   }
 
   .mCredits {
+    display: inline-block;
     h6 {
       @include scaledFont(14, 18, 18, 16, 24, 24);
       font-weight: 300;
       margin-bottom: $base-md;
     }
     font-size: 10px;
-    margin-top: $base;
+  }
+  .aCopyright {
+    display: inline-block;
+    color: white;
+    font-size: 10px;
   }
 }
 
@@ -80,6 +90,11 @@
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
 
 @media ($md-up) {
+  .oFooter {
+    .mImage {
+      margin: 0;
+    }
+  }
 }
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++
