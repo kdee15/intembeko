@@ -4,12 +4,18 @@ export const PAGE_CONTENT = `
       items {
         title
         slug
+        copy {
+          json
+        }
       }
     }
     pageVacanciesCollection(where: { slug: $slug }, limit: 1) {
       items {
         title
         slug
+        copy {
+          json
+        }
       }
     }
     componentFooter (id:"5ZLL8tPLg3SxGaJu0seCjp") {

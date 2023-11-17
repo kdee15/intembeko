@@ -14,31 +14,31 @@ export default function Footer(props) {
       <div className={`${classes.oContainer} container`}>
         <div className={`${classes.oRow} row no-gutters`}>
           <div className={`${classes.oCol} col-12 col-md-4`}>
-            <figure className={`${classes.mImage}`}>
-              {logo.url ? (
-                <Image
-                  className={`${classes.aImage}`}
-                  src={`${logo.url}`}
-                  height={logo.height}
-                  width={logo.width}
-                  alt={logo.title}
-                  aria-hidden="true"
-                  layout="responsive"
-                  priority="true"
-                />
-              ) : (
-                <Image
-                  className={`${classes.aImage}`}
-                  src={`${logo.fields.file.url}`}
-                  height={logo.fields.file.details.image.height}
-                  width={logo.fields.file.details.image.width}
-                  alt={logo.title}
-                  aria-hidden="true"
-                  layout="responsive"
-                  priority="true"
-                />
-              )}
-            </figure>
+            <Link href={`/`}>
+              <a>
+                <figure className={`${classes.mImage}`}>
+                  {logo.fields ? (
+                    <Image
+                      className={`${classes.aImage}`}
+                      src={`${logo.fields.file.url}`}
+                      height={logo.fields.file.details.image.height}
+                      width={logo.fields.file.details.image.width}
+                      alt={logo.title}
+                      aria-hidden="true"
+                      layout="responsive"
+                      priority="true"
+                    />
+                  ) : (
+                    <figure
+                      className={`${classes.aImageBG}`}
+                      style={{
+                        backgroundImage: `url(${logo.url})`,
+                      }}
+                    ></figure>
+                  )}
+                </figure>
+              </a>
+            </Link>
           </div>
           <div className={`${classes.oCol} col-12 col-md-4`}>
             {address.json ? (
